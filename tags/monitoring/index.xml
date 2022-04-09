@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitoring on AWS Networking Day</title>
+    <link>/tags/monitoring.html</link>
+    <description>Recent content in Monitoring on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lab4-VPC网络监控和告警</title>
+      <link>/4-monitor.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/4-monitor.html</guid>
+      <description> 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ VPC Flow Logs（VPC流日志）可以用来捕获网络双向传输中的数据，包括进入或者流出的数据，并生成对应的日志，以便管理员在遇到网络相关问题时进行检查和排错。另外，如果您有内容交付平台，流日志也可以分析和预测用户的内容访问模式，跟踪最热门的对话和恶意连接。
+在本章节中，您将利用在实验室3中创建的VPC以及IGW，Transit Gateway和EC2实例。您将为VPC Hub设置VPC Flow Logs，生成一些流量，然后在CloudWatch中查看日志。 </description>
+    </item>
+    
+  </channel>
+</rss>

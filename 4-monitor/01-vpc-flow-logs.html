@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="cn" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="AWS Technical Event">
+<meta name="author" content="Weiqiong Chen">
+
+    <link rel="icon" href="../images/favicon.ico" type="image/png">
+
+    <title>01-设置VPC Flow Logs :: AWS Networking Day</title>
+
+    
+    <link href="../css/nucleus.css?1649508493" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1649508493" rel="stylesheet">
+    <link href="../css/hybrid.css?1649508493" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1649508493" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1649508493" rel="stylesheet">
+    <link href="../css/auto-complete.css?1649508493" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1649508493" rel="stylesheet">
+    <link href="../css/theme.css?1649508493" rel="stylesheet">
+    <link href="../css/tabs.css?1649508493" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1649508493" rel="stylesheet">
+    
+    <link href="../css/theme-aws.css?1649508493" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1649508493"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../4-monitor/01-vpc-flow-logs.html">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+   <a href="../" title="Go Index">
+       <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+   </a>
+ </div>
+ 
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1649508493"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1649508493"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1649508493"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='../'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/0-prepare.html" title="Lab0-实验环境准备" class="dd-item
+        
+        
+        
+        ">
+      <a href="../0-prepare.html">
+          Lab0-实验环境准备
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-app-net.html" title="Lab1-构建3层应用的生产网络" class="dd-item
+        
+        
+        
+        ">
+      <a href="../1-app-net.html">
+          Lab1-构建3层应用的生产网络
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/01-network.html" title="01-网络环境配置" class="dd-item ">
+        <a href="../1-app-net/01-network.html">
+        01-网络环境配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/02-app.html" title="02-应用部署和配置" class="dd-item ">
+        <a href="../1-app-net/02-app.html">
+        02-应用部署和配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/03-elb.html" title="03-负载均衡配置" class="dd-item ">
+        <a href="../1-app-net/03-elb.html">
+        03-负载均衡配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-accelerate.html" title="Lab2-应用的静态和动态加速" class="dd-item
+        
+        
+        
+        ">
+      <a href="../2-accelerate.html">
+          Lab2-应用的静态和动态加速
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/01-content.html" title="01-源内容" class="dd-item ">
+        <a href="../2-accelerate/01-content.html">
+        01-源内容
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/02-cloudfront.html" title="02-配置静态和动态加速" class="dd-item ">
+        <a href="../2-accelerate/02-cloudfront.html">
+        02-配置静态和动态加速
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-tgw.html" title="Lab3-多网络互联(Peering/TGW)" class="dd-item
+        
+        
+        
+        ">
+      <a href="../3-tgw.html">
+          Lab3-多网络互联(Peering/TGW)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/01-create-vpc.html" title="01-创建本实验环境" class="dd-item ">
+        <a href="../3-tgw/01-create-vpc.html">
+        01-创建本实验环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/02-vpc-peering.html" title="02-创建VPC对等连接" class="dd-item ">
+        <a href="../3-tgw/02-vpc-peering.html">
+        02-创建VPC对等连接
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/03-tgw.html" title="03-使用TGW创建互联环境" class="dd-item ">
+        <a href="../3-tgw/03-tgw.html">
+        03-使用TGW创建互联环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-monitor.html" title="Lab4-VPC网络监控和告警" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../4-monitor.html">
+          Lab4-VPC网络监控和告警
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/01-vpc-flow-logs.html" title="01-设置VPC Flow Logs" class="dd-item active">
+        <a href="../4-monitor/01-vpc-flow-logs.html">
+        01-设置VPC Flow Logs
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/02-cloudwatch.html" title="02-CloudWatch监控" class="dd-item ">
+        <a href="../4-monitor/02-cloudwatch.html">
+        02-CloudWatch监控
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/03-cloudtrail.html" title="03-CloudTrail审计跟踪（可选）" class="dd-item ">
+        <a href="../4-monitor/03-cloudtrail.html">
+        03-CloudTrail审计跟踪（可选）
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/about.html" title="关于我们" class="dd-item
+        
+        
+        
+        ">
+      <a href="../about.html">
+          关于我们
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+	<h5 class="copyright">CopyRight: &copy; 2022 bwcx.me.
+		<BR>Author: Weiqiong Chen/Robin Long
+		<BR>Update: 2022-04
+	<h5>
+</left>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../'>Networking-Day</a> > <a href='../4-monitor.html'>Lab4-VPC网络监控和告警</a> > 01-设置VPC Flow Logs
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建-log-group">创建 Log Group</a></li>
+    <li><a href="#创建vpc-flow-logs">创建VPC Flow Logs</a></li>
+    <li><a href="#生成测试流量">生成测试流量</a></li>
+    <li><a href="#在cloudwatch中查看vpc-flow-logs流日志">在CloudWatch中查看VPC Flow Logs流日志</a></li>
+    <li><a href="#查询流日志以获取见解">查询流日志以获取见解</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+<div class="tags">
+
+  <a class="tag-link" href="../tags/vpc">VPC</a>
+
+  <a class="tag-link" href="../tags/flow-logs">Flow Logs</a>
+
+</div>
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              01-设置VPC Flow Logs
+            </h1>
+          
+
+        
+
+
+
+<div class="notices info" ><p>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。</p>
+</div>
+
+<h2 id="创建-log-group">创建 Log Group</h2>
+<hr>
+<p>首先我们需要创建一个 CloudWatch Log Group，来存储我们在这一节中需要记录的Log日志信息。</p>
+<ul>
+<li>
+<p>控制台导航到“CloudWatch”，选择 Log -&gt; Log groups，点击右上方的 “Create log group”
+<img src="../images/4/image004.png" alt=""></p>
+</li>
+<li>
+<p>输入Log group name 为shenzhen-im-day，点击 Create 按钮
+<img src="../images/4/image005.png" alt=""></p>
+</li>
+</ul>
+<h2 id="创建vpc-flow-logs">创建VPC Flow Logs</h2>
+<hr>
+<p>在本章节中，您将为VPC Hub创建流日志。</p>
+<ul>
+<li>控制台导航到“VPC” – “Your VPCs”
+<img src="../images/4/image006.png" alt=""></li>
+<li>选择“VPC Hub”, 单击“Flow Logs” 选项，然后单击 “Create flow log”</li>
+<li>将 过滤器 “Filter” 改为 “All”</li>
+<li>将 最大聚合间隔 “Maximum aggregation interval” 设置为1分钟 “1 minute”</li>
+<li>将 目标日志组 “Destination log group” 设置为 “shenzhen-im-day”</li>
+<li>单击 设置权限 “Set Up Permissions” 以创建新的IAM角色
+<img src="../images/4/image007.png" alt=""></li>
+<li>“Role Name” 保持默认</li>
+<li>单击 允许 “Allow” 然后导航回到 创建流日志”Create flow log” 界面
+<img src="../images/4/image008.png" alt=""></li>
+<li>单击IAM角色旁边的刷新按钮，然后选择您刚创建的IAM角色
+<img src="../images/4/image009.png" alt=""></li>
+<li>单击 创建 “Create”</li>
+</ul>
+<h2 id="生成测试流量">生成测试流量</h2>
+<hr>
+<p>现在，在CloudWatch中收集了往返于VPC Hub中网络接口的IP流量。现在我们需要在VPC Hub中的EC2实例生成一些流量，例如使用网络工具iperf在Hub中的实例“hub-sub-1a” 和Spoke1中的实例 “spoke1-sub-1a” 之间生成流量。</p>
+<p>首先，您需要更新Spoke1中Amazon EC2实例的安全组，以允许iperf服务器接收传入流量。</p>
+<ul>
+<li>导航到EC2控制台，在左边的菜单中选择 “EC2” – “Instances”</li>
+<li>选择EC2实例 “spoke1-sub-1a”</li>
+<li>单击下部窗格中的“安全组”以查看和编辑其规则
+<img src="../images/4/image010.png" alt=""></li>
+<li>单击 编辑入站规则 “Edit inbound rules”
+<img src="../images/4/image011.png" alt=""></li>
+<li>添加规则以允许来自VPC Hub中Amazon EC2实例的TCP端口5201。添加子网CIDR <code>10.0.0.0/24</code>
+<img src="../images/4/image012.png" alt=""></li>
+<li>单击 保存规则 ” Save rules”
+在Spoke1中的EC2实例“spoke1-sub-1a”上执行以下操作</li>
+<li>通过SSH进入VPC B中的EC2实例</li>
+</ul>
+<pre><code>ssh -i lab3.pem ec2-user@&lt;PUBLIC IP&gt;
+</code></pre><ul>
+<li>安装iperf</li>
+</ul>
+<pre><code>sudo yum install iperf3 -y
+</code></pre><ul>
+<li>启动iperf服务器</li>
+</ul>
+<pre><code>iperf3 -s
+</code></pre><p>在VPC Hub中的EC2实例 “hub-sub-1a” 上执行以下操作</p>
+<ul>
+<li>通过SSH进入VPC A中的EC2实例 “EC2 VPC A – AZ1”</li>
+</ul>
+<pre><code>ssh -i lab3.pem ec2-user@&lt;PUBLIC IP&gt;
+</code></pre><ul>
+<li>安装iperf</li>
+</ul>
+<pre><code>sudo yum install iperf3 -y
+</code></pre><ul>
+<li>设置2 个数据流并发、持续传输30秒的TCP连接到Spoke1中的EC2实例“spoke-sub-1a”（请使用私有IP）</li>
+</ul>
+<pre><code>iperf3 -c &lt;PRIVATE IP OF SPOKE1 INSTANCE 10.1.0.X&gt; -P 2 -t 30
+</code></pre><p>如下所示
+<img src="../images/4/image013.png" alt=""></p>
+<h2 id="在cloudwatch中查看vpc-flow-logs流日志">在CloudWatch中查看VPC Flow Logs流日志</h2>
+<hr>
+<p>VPC Flow logs可以发送到Amazon S3存储桶或CloudWatch。在前面的章节中，我们配置了从VPC Hub发送到CloudWatch的流日志。我们现在可以导航到CloudWatch查看日志。
+<img src="../images/4/image014.png" alt=""></p>
+<ul>
+<li>在“Flow Logs”选项卡下，单击目标“ shenzhen-im-day”以导航到CloudWatch<br>
+发布到 CloudWatch 时，流日志数据将发布到日志组，并且每个网络接口在日志组中具有唯一的日志流。日志流包含流日志记录。您可以在同一个日志组里创建多个流日志。
+<img src="../images/4/image015.png" alt=""></li>
+<li>单击网络接口（ENI）日志流以查看该接口的流日志记录
+<img src="../images/4/image016.png" alt="">
+流日志的剖析：
+<img src="../images/4/image017.png" alt=""></li>
+<li>可选：要查看列表中每个ENI附加到的Amazon EC2实例，请导航至“ EC2” –“ Network Interfaces”
+<img src="../images/4/image018.png" alt=""></li>
+<li>选择一个ENI，然后单击 实例ID “Instance id”
+<img src="../images/4/image019.png" alt=""></li>
+</ul>
+<h2 id="查询流日志以获取见解">查询流日志以获取见解</h2>
+<hr>
+<p>CloudWatch Logs Insights使您能够交互式搜索和分析CloudWatch Logs中的日志数据，包括VPC流日志。您可以执行查询以帮助您更有效地响应日常运维问题。在本章节中，您将运行一个查询，显示字节数传输最多的前10个连接。</p>
+<ul>
+<li>导航到“CloudWatch” – “Insights”</li>
+<li>单击 选择日志组 “Select log group(s)” ，选择“shenzhen-im-day”</li>
+<li>单击 简单查询 “Simple queries” –  “VPC flow log queries” （VPC流日志查询）– “Top 10 byte transfers by source and destination IP addresses” （按源IP地址和目标IP地址传输的前10个字节）</li>
+<li>单击 运行查询 “Run query”</li>
+<li>查看查询结果
+<img src="../images/4/image020.png" alt=""></li>
+</ul>
+<p>在这个结果内，我们可以看到在这个 VPC 内传输数据量最大的源/目标 IP地址，并且进行了从大到小的排序。</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../4-monitor.html" title="Lab4-VPC网络监控和告警"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../4-monitor/02-cloudwatch.html" title="02-CloudWatch监控" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1649508493"></script>
+    <script src="../js/jquery.sticky.js?1649508493"></script>
+    <script src="../js/featherlight.min.js?1649508493"></script>
+    <script src="../js/highlight.pack.js?1649508493"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1649508493"></script>
+    <script src="../js/learn.js?1649508493"></script>
+    <script src="../js/hugo-learn.js?1649508493"></script>
+    
+        
+            <script src="../mermaid/mermaid.js?1649508493"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

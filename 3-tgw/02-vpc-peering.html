@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="cn" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="AWS Technical Event">
+<meta name="author" content="Weiqiong Chen">
+
+    <link rel="icon" href="../images/favicon.ico" type="image/png">
+
+    <title>02-创建VPC对等连接 :: AWS Networking Day</title>
+
+    
+    <link href="../css/nucleus.css?1649508493" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1649508493" rel="stylesheet">
+    <link href="../css/hybrid.css?1649508493" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1649508493" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1649508493" rel="stylesheet">
+    <link href="../css/auto-complete.css?1649508493" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1649508493" rel="stylesheet">
+    <link href="../css/theme.css?1649508493" rel="stylesheet">
+    <link href="../css/tabs.css?1649508493" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1649508493" rel="stylesheet">
+    
+    <link href="../css/theme-aws.css?1649508493" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1649508493"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../3-tgw/02-vpc-peering.html">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+   <a href="../" title="Go Index">
+       <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+   </a>
+ </div>
+ 
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1649508493"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1649508493"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1649508493"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='../'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/0-prepare.html" title="Lab0-实验环境准备" class="dd-item
+        
+        
+        
+        ">
+      <a href="../0-prepare.html">
+          Lab0-实验环境准备
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-app-net.html" title="Lab1-构建3层应用的生产网络" class="dd-item
+        
+        
+        
+        ">
+      <a href="../1-app-net.html">
+          Lab1-构建3层应用的生产网络
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/01-network.html" title="01-网络环境配置" class="dd-item ">
+        <a href="../1-app-net/01-network.html">
+        01-网络环境配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/02-app.html" title="02-应用部署和配置" class="dd-item ">
+        <a href="../1-app-net/02-app.html">
+        02-应用部署和配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/03-elb.html" title="03-负载均衡配置" class="dd-item ">
+        <a href="../1-app-net/03-elb.html">
+        03-负载均衡配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-accelerate.html" title="Lab2-应用的静态和动态加速" class="dd-item
+        
+        
+        
+        ">
+      <a href="../2-accelerate.html">
+          Lab2-应用的静态和动态加速
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/01-content.html" title="01-源内容" class="dd-item ">
+        <a href="../2-accelerate/01-content.html">
+        01-源内容
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/02-cloudfront.html" title="02-配置静态和动态加速" class="dd-item ">
+        <a href="../2-accelerate/02-cloudfront.html">
+        02-配置静态和动态加速
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-tgw.html" title="Lab3-多网络互联(Peering/TGW)" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../3-tgw.html">
+          Lab3-多网络互联(Peering/TGW)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/01-create-vpc.html" title="01-创建本实验环境" class="dd-item ">
+        <a href="../3-tgw/01-create-vpc.html">
+        01-创建本实验环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/02-vpc-peering.html" title="02-创建VPC对等连接" class="dd-item active">
+        <a href="../3-tgw/02-vpc-peering.html">
+        02-创建VPC对等连接
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/03-tgw.html" title="03-使用TGW创建互联环境" class="dd-item ">
+        <a href="../3-tgw/03-tgw.html">
+        03-使用TGW创建互联环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-monitor.html" title="Lab4-VPC网络监控和告警" class="dd-item
+        
+        
+        
+        ">
+      <a href="../4-monitor.html">
+          Lab4-VPC网络监控和告警
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/01-vpc-flow-logs.html" title="01-设置VPC Flow Logs" class="dd-item ">
+        <a href="../4-monitor/01-vpc-flow-logs.html">
+        01-设置VPC Flow Logs
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/02-cloudwatch.html" title="02-CloudWatch监控" class="dd-item ">
+        <a href="../4-monitor/02-cloudwatch.html">
+        02-CloudWatch监控
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/03-cloudtrail.html" title="03-CloudTrail审计跟踪（可选）" class="dd-item ">
+        <a href="../4-monitor/03-cloudtrail.html">
+        03-CloudTrail审计跟踪（可选）
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/about.html" title="关于我们" class="dd-item
+        
+        
+        
+        ">
+      <a href="../about.html">
+          关于我们
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+	<h5 class="copyright">CopyRight: &copy; 2022 bwcx.me.
+		<BR>Author: Weiqiong Chen/Robin Long
+		<BR>Update: 2022-04
+	<h5>
+</left>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../'>Networking-Day</a> > <a href='../3-tgw.html'>Lab3-多网络互联(Peering/TGW)</a> > 02-创建VPC对等连接
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建vpc-peering-connection">创建VPC Peering Connection</a></li>
+    <li><a href="#更新spoke-1和spoke-3的路由表">更新Spoke-1和Spoke-3的路由表</a></li>
+    <li><a href="#验证测试vpc-peering">验证测试VPC Peering</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+<div class="tags">
+
+  <a class="tag-link" href="../tags/vpc">VPC</a>
+
+  <a class="tag-link" href="../tags/peering">Peering</a>
+
+</div>
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              02-创建VPC对等连接
+            </h1>
+          
+
+        
+
+
+
+<div class="notices info" ><p>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。</p>
+</div>
+
+<h2 id="创建vpc-peering-connection">创建VPC Peering Connection</h2>
+<hr>
+<p>在VPC console中选择Peering Connnections按钮，点击Create Peering Connection
+<img src="../images/3/image052.png" alt=""></p>
+<p>输入Peering connection name tag、VPC (Requester)为Spoke-3、VPC (Accepter)为Spoke-1
+<img src="../images/3/image055.png" alt=""></p>
+<p>选择目标
+<img src="../images/3/image057.png" alt=""></p>
+<p>点击Creating Peering Connection
+<img src="../images/3/image059.png" alt=""></p>
+<p>观察现在的Peering Connection 为Pending Acceptance状态
+<img src="../images/3/image062.png" alt=""></p>
+<p>点击Actions，选择Accept Request
+<img src="../images/3/image064.png" alt=""></p>
+<p>选择Yes，Accept
+<img src="../images/3/image066.png" alt=""></p>
+
+<div class="notices warning" ><p>此处的截图的区域其实并不是新加坡区域，所以截图的Region仅供参考，请学员操作时务必确保在新加坡区域。</p>
+</div>
+
+<p>观察现在的Peering Connection 为Active状态
+<img src="../images/3/image068.png" alt=""></p>
+<h2 id="更新spoke-1和spoke-3的路由表">更新Spoke-1和Spoke-3的路由表</h2>
+<hr>
+<p>点击Route Tables，选中Spoke1，点击Edit routes：
+<img src="../images/3/image069.png" alt=""></p>
+<p>添加一条路由，Destination为<code>10.3.0.0/16</code>，Target 选择<code>Peering Connection</code>
+<img src="../images/3/image072.png" alt=""></p>
+<p>选择上一步创建好的Peering Connection ID，选择Save Routes
+<img src="../images/3/image074.png" alt=""></p>
+<p>同样，更新Spoke3路由表，点击Route Tables，选中Spoke3，点击Edit routes：
+<img src="../images/3/image076.png" alt=""></p>
+<p>添加一条路由，Destination为<code>10.1.0.0/16</code>，Target 选择Peering Connection
+<img src="../images/3/image079.png" alt=""></p>
+<p>选择前面创建好的Peering Connection ID，选择Save Routes
+<img src="../images/3/image081.png" alt=""></p>
+<h2 id="验证测试vpc-peering">验证测试VPC Peering</h2>
+<hr>
+<p>远程登录EC2实例Spoke1-sub-1a，PingEC2实例Spoke3-sub-1a</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd &lt;lab3.pem文件所在目录&gt;
+chmod <span style="color:#ae81ff">400</span> lab3.pem
+ssh -i lab3.pem ec2-user@&lt;PUBLIC IP of Spoke1-sub-1a&gt;
+</code></pre></div><p>然后ping
+<img src="../images/3/image082.png" alt=""></p>
+<p>Ping通，证明VPC Peering正常工作</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../3-tgw/01-create-vpc.html" title="01-创建本实验环境"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../3-tgw/03-tgw.html" title="03-使用TGW创建互联环境" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1649508493"></script>
+    <script src="../js/jquery.sticky.js?1649508493"></script>
+    <script src="../js/featherlight.min.js?1649508493"></script>
+    <script src="../js/highlight.pack.js?1649508493"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1649508493"></script>
+    <script src="../js/learn.js?1649508493"></script>
+    <script src="../js/hugo-learn.js?1649508493"></script>
+    
+        
+            <script src="../mermaid/mermaid.js?1649508493"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

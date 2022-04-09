@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lab0-实验环境准备 on AWS Networking Day</title>
+    <link>/0-prepare.html</link>
+    <description>Recent content in Lab0-实验环境准备 on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/0-prepare/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

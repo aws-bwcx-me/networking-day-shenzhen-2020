@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lab3-多网络互联(Peering/TGW) on AWS Networking Day</title>
+    <link>/3-tgw.html</link>
+    <description>Recent content in Lab3-多网络互联(Peering/TGW) on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/3-tgw/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>01-创建本实验环境</title>
+      <link>/3-tgw/01-create-vpc.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3-tgw/01-create-vpc.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建4个VPC  登录到AWS Console，打开VPC服务， 点击 Your VPCs，点击Create VPC按钮 在Name tag输入VPC Spoke-2，在IPv4 CIDR block输入 10.2.0.0/16，点击 Create VPC按钮 选中创建好的VPC Spoke-2，从Actions选择下拉列表中的Edit DNS hostnames 勾上 Enable，点击 Save changes按钮。 创建IGW  点击Internet Gateways，点击 Create internet gateway 在Name tag里面输入spoke2，点击 Create internet gateway 选择Actions下拉列表里面的Attach to VPC 从Select a VPC里面选择 前面创建好的vpc-spoke2点击 Attach internet gateway按钮。 创建route table  点击Route Tables，点击 Create route table按钮。 在Name tag选择建好的VPC Spoke2，点击Create 点击 Route Table ID后的链接 选择Routes，点击Edit routes按钮 点击Add route 在Destination列输入0.0.0.0/0，在target里面选择Internet Gateway，接着选择前面创建的IGW，点击Save routes按钮 创建subnet  点击Subnets，点击Create subnet按钮 在Name tag输入 VPC Spoke-2-1a，VPC选择前面创建的Spoke-2，Availability Zone选择1a结尾的，IPv4 CIDR block里面输入10.</description>
+    </item>
+    
+    <item>
+      <title>02-创建VPC对等连接</title>
+      <link>/3-tgw/02-vpc-peering.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3-tgw/02-vpc-peering.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建VPC Peering Connection  在VPC console中选择Peering Connnections按钮，点击Create Peering Connection 输入Peering connection name tag、VPC (Requester)为Spoke-3、VPC (Accepter)为Spoke-1 选择目标 点击Creating Peering Connection 观察现在的Peering Connection 为Pending Acceptance状态 点击Actions，选择Accept Request 选择Yes，Accept 此处的截图的区域其实并不是新加坡区域，所以截图的Region仅供参考，请学员操作时务必确保在新加坡区域。
+ 观察现在的Peering Connection 为Active状态 更新Spoke-1和Spoke-3的路由表  点击Route Tables，选中Spoke1，点击Edit routes： 添加一条路由，Destination为10.3.0.0/16，Target 选择Peering Connection 选择上一步创建好的Peering Connection ID，选择Save Routes 同样，更新Spoke3路由表，点击Route Tables，选中Spoke3，点击Edit routes： 添加一条路由，Destination为10.1.0.0/16，Target 选择Peering Connection 选择前面创建好的Peering Connection ID，选择Save Routes 验证测试VPC Peering  远程登录EC2实例Spoke1-sub-1a，PingEC2实例Spoke3-sub-1a
+cd &amp;lt;lab3.pem文件所在目录&amp;gt; chmod 400 lab3.pem ssh -i lab3.pem ec2-user@&amp;lt;PUBLIC IP of Spoke1-sub-1a&amp;gt; 然后ping Ping通，证明VPC Peering正常工作</description>
+    </item>
+    
+    <item>
+      <title>03-使用TGW创建互联环境</title>
+      <link>/3-tgw/03-tgw.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3-tgw/03-tgw.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建Transit Gateway  点击VPC窗口的Transit Gateway按钮，点击Create Transit Gateway 输入Name tag和Description 点击创建TGW， 创建Transit Gateway 附件  点击VPC窗口的Transit Gateway Attachments按钮，点击Create Transit Gateway Attachments按钮 在Transit Gateway ID那栏选中之前步骤创建的TGW
+Attachment type选择VPC
+在VPC Attachment部分，输入Attachment name tag
+VPC ID选择之前创建的VPC Spoke-1
+在Subnet IDs部分勾选全部2个Subnets
+再点击创建，可以看到console上已经显示一个名为VPC Spoke-1的VPC attachment 重复上述步骤，继续创建Attachment VPC Spoke-2和VPC Hub：
+点击Create Transit Gateway Attachments按钮 在Transit Gateway ID那栏选中之前创建的TGW
+Attachment type选择VPC
+在VPC Attachment部分，输入Attachment name tag
+VPC ID选择之前创建的VPC Spoke-2
+在Subnet IDs部分勾选全部2个Subnets
+再点击创建，可以看到console上已经显示一个名为的VPC Spoke-2的VPC attachment 点击Create Transit Gateway Attachments按钮 在Transit Gateway ID那栏选中之前创建的TGW</description>
+    </item>
+    
+  </channel>
+</rss>

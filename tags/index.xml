@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on AWS Networking Day</title>
+    <link>/tags.html</link>
+    <description>Recent content in Tags on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Account</title>
+      <link>/tags/account.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/account.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ALB</title>
+      <link>/tags/alb.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/alb.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aurora</title>
+      <link>/tags/aurora.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/aurora.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CloudFront</title>
+      <link>/tags/cloudfront.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/cloudfront.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CloudTrail</title>
+      <link>/tags/cloudtrail.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/cloudtrail.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CloudWatch</title>
+      <link>/tags/cloudwatch.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/cloudwatch.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EC2</title>
+      <link>/tags/ec2.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ec2.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ELB</title>
+      <link>/tags/elb.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/elb.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flow Logs</title>
+      <link>/tags/flow-logs.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/flow-logs.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IGW</title>
+      <link>/tags/igw.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/igw.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LAMP</title>
+      <link>/tags/lamp.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lamp.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monitoring</title>
+      <link>/tags/monitoring.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/monitoring.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Peering</title>
+      <link>/tags/peering.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/peering.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>S3</title>
+      <link>/tags/s3.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/s3.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TGW</title>
+      <link>/tags/tgw.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tgw.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transit GW</title>
+      <link>/tags/transit-gw.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/transit-gw.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VPC</title>
+      <link>/tags/vpc.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/vpc.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VPC Flow</title>
+      <link>/tags/vpc-flow.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/vpc-flow.html</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,267 @@
+[
+{
+	"uri": "/",
+	"title": "Networking-Day",
+	"tags": [],
+	"description": "",
+	"content": "AWS Networking Day 深圳站 - 2020.11  要完成所有的实验，大概需要 1-3 小时。\n 我们的实验使用的区域是AWS的 新加坡区域（ap-southeast-1），如果一不小心进入了别的区域，记得在控制台切换回即可。\n "
+},
+{
+	"uri": "/0-prepare.html",
+	"title": "Lab0-实验环境准备",
+	"tags": ["Account"],
+	"description": "",
+	"content": "网络连接  请遵照现场指导老师的指引配置对应的 WIFI。\n 登录环境  如果您的电脑操作系统是Windows，请从 https://www.ssh.com/ssh/putty/windows/ 下载PuTTY，然后安装。如果您的电脑操作系统是MacOS，不需要安装，直接使用已有SSH终端。\n 也可以直接从下面这里下载（Windows，64位）   putty(远程ssh登录用) 和 puttygen(转换key格式用)   putty.exe (1 )   puttygen.exe (680 )    在您的电脑浏览器里访问 https://dashboard.eventengine.run/login?hash=xxxxxxxxxxxx （请把xxxxxxxxxxxx替换为发给您的纸条上的hash值）\n请只使用 新加坡区域（ap-southeast-1）\n然后 登录成功后开始做实验 Lab1/2/3/4 (注意：实验环境和账号将于 2020.11.29 结束，请尽早完成实验)\n有奖竞答  当天会议结束前会进行问题有奖竞答，巩固学习到的技能。\n请电脑或手机访问下列链接：https://kahoot.it/ GAME PIN请等待最后演讲嘉宾指定。\n调查问卷  请扫描下列二维码或访问这个URL（ https://jinshuju.net/f/MieW9N ）链接填写调差问卷。\n谢谢大家。\n~完~\n"
+},
+{
+	"uri": "/1-app-net.html",
+	"title": "Lab1-构建3层应用的生产网络",
+	"tags": ["VPC", "EC2", "Aurora", "ALB"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 本实验目的主要是在AWS上搭建一个简单的3层应用网络，部署后的网络架构图如下： "
+},
+{
+	"uri": "/2-accelerate.html",
+	"title": "Lab2-应用的静态和动态加速",
+	"tags": ["CloudFront"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 加速场景的网络架构图如下 "
+},
+{
+	"uri": "/3-tgw.html",
+	"title": "Lab3-多网络互联(Peering/TGW)",
+	"tags": ["Peering", "TGW"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 实验目标  本实验目的是在AWS上搭建一个多网络互联的环境，网络架构图如下： 实验任务   VPC Spoke-1 内的 EC2 可以和 VPC Spoke-3 内的 EC2 通信 VPC Spoke-1 内的 EC2 不可以和 VPC Spoke-2 内的 EC2 通信 VPC Spoke-1 和 VPC Spoke-2内的 EC2 可以和 VPC Hub 内的 EC2 通信  主要创建4个VPC（包含IGW，route table，2个subnet）和4个EC2实例\n   VPC名称 CIDR 可用区 子网 EC2 Name     VPC Hub 10.0.0.0/16 VPC Hub-sub-1a in AZ1 10.0.0.0/24 hub-sub-1a   VPC Hub 10.0.0.0/16 VPC Hub-sub-1b in AZ2 10.0.1.0/24 /   VPC Spoke-1 10.1.0.0/16 VPC Spoke-1-sub-1a in AZ1 10.1.0.0/24 spoke1-sub-1a   VPC Spoke-1 10.1.0.0/16 VPC Spoke-1-sub-1b in AZ2 10.1.1.0/24 /   VPC Spoke-2 10.2.0.0/16 VPC Spoke-2-sub-1a in AZ1 10.2.0.0/24 spoke2-sub-1a   VPC Spoke-2 10.2.0.0/16 VPC Spoke-2-sub-1b in AZ2 10.2.1.0/24 /   VPC Spoke-3 10.3.0.0/16 VPC Spoke-3-sub-1a in AZ1 10.3.0.0/24 spoke3-sub-1a   VPC Spoke-3 10.3.0.0/16 VPC Spoke-3-sub-1b in AZ2 10.3.1.0/24 /    说明：\n本实验共需要创建一共4个VPC，每个VPC有2个子网，分别分布于2个AZ中，每个子网一个C类地址；\n由于实验时间所限，只分别在AZ1所在子网创建一个EC2用于Ping测试实验；\n具体要创建的VPC、子网、CIDR、EC2如上表所示。\n"
+},
+{
+	"uri": "/4-monitor.html",
+	"title": "Lab4-VPC网络监控和告警",
+	"tags": ["VPC Flow", "Monitoring"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n VPC Flow Logs（VPC流日志）可以用来捕获网络双向传输中的数据，包括进入或者流出的数据，并生成对应的日志，以便管理员在遇到网络相关问题时进行检查和排错。另外，如果您有内容交付平台，流日志也可以分析和预测用户的内容访问模式，跟踪最热门的对话和恶意连接。\n在本章节中，您将利用在实验室3中创建的VPC以及IGW，Transit Gateway和EC2实例。您将为VPC Hub设置VPC Flow Logs，生成一些流量，然后在CloudWatch中查看日志。 "
+},
+{
+	"uri": "/1-app-net/01-network.html",
+	"title": "01-网络环境配置",
+	"tags": ["VPC", "IGW"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 此处主要配置VPC，IGW，route table，public subnet，private subnet\n创建VPC  登录到AWS Console，打开VPC服务， 点击 Your VPCs，点击Create VPC按钮 在Name tag输入vpc1，在IPv4 CIDR block输入 192.168.0.0/16，点击 Create VPC按钮 选中创建好的vpc1，从Actions选择下拉列表中的 Edit DNS hostnames 勾上 Enable，点击 Save changes按钮。 创建IGW  点击Internet Gateways，点击 Create internet gateway 在Name tag里面输入vpc1，点击 Create internet gateway 选择Actions下拉列表里面的Attach to VPC 从Select a VPC里面选择 前面创建好的vpc1点击 Attach internet gateway按钮。 创建route table  点击Route Tables，点击 Create route table按钮。 在Name tag vpc1 点击 Route Table ID后的链接 选择Routes，点击Edit routes按钮 点击Add route 在Destination列输入0.0.0.0/0，在target里面选择Internet Gateway，接着选择前面创建的IGW，点击Save routes按钮 创建public subnet  点击Subnets，点击Create subnet按钮 在Name tag输入 publicsubnet1，VPC选择前面创建的vpc1，Availability Zone选择1a结尾的，IPv4 CIDR block里面输入192.168.0.0/24，点击Create按钮。 重复上面的步骤，创建publicsubnet2，在Name tag输入 publicsubnet2，VPC选择前面创建的vpc1，Availability Zone选择1b结尾的，IPv4 CIDR block里面输入192.168.10.0/24，点击Create按钮。 为publicsubnet1和publicsubnet2关联前面创建的Route table：分别选择publicsubnet1和publicsubnet2，点击Edit route table association按钮 选择之前创建的route table：vpc1，点击save按钮 注意：分别为publicsubnet1和publicsubnet2 关联前面创建的Route table\n通过如下的方式，分别为publicsubnet1和publicsubnet2打开auto-assign IP settings（自动分配外网IP地址） 然后选中并保存即可 创建private subnet  点击Subnets，点击Create subnet按钮 在Name tag输入 privatesubnet1，VPC选择前面创建的vpc1，Availability Zone选择1a结尾的，IPv4 CIDR block里面输入192.168.1.0/24，点击Create按钮。 重复此步骤，创建privatesubnet2，在Name tag输入 privatesubnet2，VPC选择前面创建的vpc1，Availability Zone选择1b结尾的，IPv4 CIDR block里面输入192.168.20.0/24，点击Create按钮。 注意：privatesubnet1和privatesubnet2 使用vpc1默认的Route table，不需要单独关联。\n"
+},
+{
+	"uri": "/1-app-net/02-app.html",
+	"title": "02-应用部署和配置",
+	"tags": ["Aurora", "LAMP"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建数据库  此处的数据库平台包括：Aurora MySQL 平台和引擎。\n在AWS的Console上搜索RDS，打开Amazon RDS服务。  创建DB Subnet group  点击Subnet groups，点击Create DB Subnet Group按钮 在Name和Description分别输入lab1，VPC选择前面创建的vpc1 Add subnets选择上一个步骤里面创建的两个private subnet(注意看CIDR来区分)，点击Create按钮  创建Aurora MySQL database  点击Create database按钮 默认选择Standard create，\n在Engine type默认选择Amazon Aurora，\n在Edition默认选择 Amazon Aurora with MySQL compatibility\n在Capacity type默认选择 Provisioned，\n在Version选择最新版本 Aurora(MySQL5.7) 2.09.0，\n在Templates默认选Production\n在DB cluster identifier里面输入database-lab1，\n在Password输入你设定的密码 [注意：要记录好密码]\n请牢记此处你设置的密码。\n 在DB instance size选择 Bustable classes(includes t classes) ,\n在下拉框中选择db.t3.small \n在Availability \u0026amp; durability默认选择 Create an Aurora Replica or Reader node in a different AZ (recommended for scaled availability) 在Connectivity里面选择前面创建的vpc1\n点开 Additional connectivity configuration，在Subnet group里面选择之前创建的lab1 其他保持默认，点击Create database按钮 等几分钟，数据库的状态Status会变为Available。拷贝database cluster writer的endpoint（例如此处为 database-lab1.cluster-cnszku2km8ca.us-east-1.rds.amazonaws.com）\n此处的截图的区域其实并不是新加坡区域（写文档时还不确定一定使用新加坡区域），所以此处的URL地址仅供参考。\n 接下来修改security group：选择Writer instance，点击VPC security groups链接 然后点击Edit inbound rules按钮 在Type里面选MYSQL/Aurora，source里面输入192.168.0.0/16，点击Save rules按钮。 创建EC2   创建keypair  打开EC2服务 点击Key Pairs，点击Create key pair按钮 在Name输入lab1,\nFile format根据您当前的使用的ssh软件选择：pem（Linux/Mac） or ppk（Windows）；\n点击Create key pair按钮后会下载一个pem或ppk到您的本地机器上。  创建EC2实例  打开EC2服务 点击Instances， 点击Launch instances按钮 点击Amazon Linux 2 AMI (HVM), SSD Volume Type后面的Select按钮 选择t3.small，点击Next:Configure Instance Details按钮 在Network选择前面创建的vpc1，subnet选择publicsubnet1，Auto-assign Public IP选择Enable，点击Next:Add Storage按钮 Storage取默认值即可，点击Next:Add Tags按钮，Key填入 Name（默认情况下，标签tag为Name的Value会直接显示在控制台上），Value填入 lab1 ，点击Next:Configure Security Group Security group name输入lab1，修改Description，点击Add Rule按钮，从Type列表里面选择HTTP，点击Review and Launch按钮。 点击Launch按钮 选择之前创建的keypair lab1，勾选 I acknowledge，点击 Launch Instances按钮。 等待几分钟后EC2的状态Status变为Running。拷贝 \u0026ldquo;Public IPv4 DNS（此处为： ec2-3-236-166-17.compute-1.amazonaws.com）\u0026rdquo;  配置ssh远程访问EC2  在您的客户端电脑上执行下列命令，以下以Mac或Linux操作系统的命令行为例（把 \u0026ldquo;Public IPv4 DNS\u0026rdquo; 换为上一个步骤里面的拷贝的DNS）\nchmod 400 lab1.pem ssh -i lab1.pem ec2-user@\u0026lt;Public IPv4 DNS\u0026gt; # ssh -i lab1.pem ec2-user@ec2-3-236-166-17.compute-1.amazonaws.com 按提示输入 yes\n如果您使用的事windows操作系统，请下载安装PuTTY 参看下列链接配置 https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html\n配置测试应用  此处主要配置EC2，安装Apache、MySQL、PHP并配置，配置Aurora MySQL，配置PHP页面\n安装httpd、php、mysql\nsudo su - yum update -y yum install -y httpd php mysql57-server php-mysqlnd service httpd start chkconfig httpd on echo \u0026#34;\u0026lt;?php phpinfo(); ?\u0026gt;\u0026#34; \u0026gt; /var/www/html/phpinfo.php service httpd restart 在您的浏览器输入 http://PublicIPv4DNS/ 确认是否可以看到 apache页面 Amazon Linux AMI Test Page\n在您的浏览器输入 http://PublicIPv4DNS/phpinfo.php 确认是否可以看到 phpinfo\n配置Aurora MySQL\nmysql --user=admin --password -h [your database endpoint] # mysql --user=admin --password -h database-lab1.cluster-cnszku2km8ca.us-east-1.rds.amazonaws.com 如下图所示 执行如下SQL代码：\nCREATE DATABASE lab1; USE lab1; CREATE TABLE table1(name varchar(50),randomnumber INT); INSERT into table1 values(\u0026#39;lab1\u0026#39;,1); exit 然后切换到linux shell环境下执行\ncd /var/www/html wget https://d0.awsstatic.com/logos/powered-by-aws-white.png vi db.php 内容如下（记得修改对应的 db_user_name 和 db_user_pwd）\n\u0026lt;?php $link=mysql_connect(\u0026quot;\u0026lt;您的Aurora MySQL endpoint\u0026gt;\u0026quot;,\u0026quot;db_user_name\u0026quot;,\u0026quot;db_user_pwd\u0026quot;) or die(\u0026quot;Error,Can't connect mySql\u0026quot;); $db_selected=mysql_select_db(\u0026quot;lab1\u0026quot;,$link); $result=mysql_query(\u0026quot;update table1 set randomnumber=FLOOR(RAND()*100) where name='lab1'\u0026quot;); $result=mysql_query(\u0026quot;select * from table1\u0026quot;,$link);//执行查询操作 $info=mysql_fetch_array($result); ?\u0026gt; \u0026lt;a href=\u0026quot;https://aws.amazon.com/what-is-cloud-computing\u0026quot;\u0026gt;\u0026lt;img src=\u0026quot;powered-by-aws-white.png\u0026quot; style=\u0026quot;background-color:black;\u0026quot; alt=\u0026quot;Powered by AWS Cloud Computing\u0026quot;\u0026gt;\u0026lt;/a\u0026gt; \u0026lt;table\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;td\u0026gt;Name\u0026lt;/td\u0026gt; \u0026lt;td\u0026gt;randomnumber\u0026lt;/td\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;?php do{ ?\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;th\u0026gt;\u0026lt;?php echo $info[name];?\u0026gt;\u0026lt;/th\u0026gt; \u0026lt;th\u0026gt;\u0026lt;?php echo $info[randomnumber];?\u0026gt;\u0026lt;/th\u0026gt; \u0026lt;/tr\u0026gt; \u0026lt;?php }while ($info = mysql_fetch_array($result)); ?\u0026gt; \u0026lt;/table\u0026gt; 在您的浏览器输入http://PublicIPv4DNS/db.php 确认是否可以看到 存入MySQL的记录，每次刷新页面都会用随机数更新记录并读取显示在页面上，如下图示例 生成AMI和模板   从EC2实例生成AMI  点击Instances，选中刚刚配置好的EC2实例，从Actions下拉列表里选择Image and templates，再选择Create image 在Image name和Description里面输入lab1，点击Create image按钮  从EC2实例生成Launch Template  点击Instances，选中刚刚配置好的EC2实例，从Actions下拉列表里选择Image and templates，再选择Create template from instance 在Launch template name和Description输入lab1，选中Auto Scaling guidance 在AMI搜索lab1，然后选择前面创建好的AMI：lab1，点击弹出页面的 confirm changes按钮。 在Security groups下拉列表里面选择vpc：lab1 在Network interface1点击Remove，删除\n点开Advanced details，在userdata里面输入下列内容：\n#!/bin/bash service httpd start chkconfig httpd on 然后点击Create launch template按钮 如果在创建的过程中，Behavior如果报错，请从下拉列表中选择Don’t include in launch template\n然后再重新创建。\n"
+},
+{
+	"uri": "/1-app-net/03-elb.html",
+	"title": "03-负载均衡配置",
+	"tags": ["ELB", "ALB"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 此处的内容包括：Target group、AutoScalingGroup、ALB\n创建Target Group  点击Target Groups，点击Create target group按钮 Target group name输入lab1，VPC选择vpc1，点击next按钮 点击Create target group按钮 创建AutoScaling Group  点击Auto Scaling Group链接，点击Create an Auto Scaling group按钮 在name输入lab1，在Launch template列表里选择上一步创建的launch template：lab1，点击next按钮 VPC选择vpc1，Subnet选择publicsubnet1和publicsubnet2，点击next按钮 勾选Enable load balancing，target group选择之前创建的target group：lab1，勾选ELB，点击next按钮 修改Group size，选择Target tracking scaling policy，点击skip to review按钮； 然后点击Create Auto Scaling Group按钮 创建ALB  点击Load Balancers，点击Create Load Balancer按钮 点击Application Load Balancer下面的Create按钮 输入name：lab1，VPC选择vpc1，分别选择两个子网publicsubnet1和publicsubnet2，其他保持默认，点击Next按钮 忽略警告，选择之前创建的安全组security group：lab1，点击next按钮 选择 Existing target group，选择 lab1，点击next按钮 会看到已有Auto Scaling Group里面配置的2台EC2实例，点击next按钮，然后点击下一页的Create按钮。 然后等待这个Application Load Balancer状态state变为active；拷贝它的DNS name（此处为 lab1-1377874568.us-east-1.elb.amazonaws.com） 验证测试  在您的浏览器里面粘贴上一步部署的Application Load Balancer的 DNS name\n查看 apache页面\nhttp://\u0026lt;Application Load Balancer DNS name\u0026gt; # http://lab1-1377874568.us-east-1.elb.amazonaws.com 查看动态更新数据库的页面\nhttp://\u0026lt;Application Load Balancer DNS name\u0026gt;/db.php # http://lab1-1377874568.us-east-1.elb.amazonaws.com/db.php ~完~\n"
+},
+{
+	"uri": "/2-accelerate/01-content.html",
+	"title": "01-源内容",
+	"tags": ["S3"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建S3存储桶  登录到AWS Console，打开S3服务： 点击创建存储桶 输入存储桶的名字并选择与 Lab1 中创建VPC相同的区域来创建存储桶： 其他选项都采用默认设置，点击创建存储桶： 如下图所示确认存储桶已经被创建： 准备测试文件  点击存储桶的名字进入存储桶，再点击上传按钮将Lab1中的powered-by-aws-white.png 上传到存储桶 勾选下面的选项： 如下图所示选择相应的存储类： 其他选项保持默认，然后点击上传按钮： "
+},
+{
+	"uri": "/2-accelerate/02-cloudfront.html",
+	"title": "02-配置静态和动态加速",
+	"tags": ["CloudFront"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建Cloudfront分配  登录到AWS Console，打开Cloudfront服务： Cloudfront分配中，点击创建分配： 在选择内容分发方式上选择Web，点击入门按钮： 在源设置的源域名中，选择上面创建的S3存储桶的域名： 注意选择下列设置： 其他选项保持默认，点击创建分配按钮： 等待分配状态变为已部署（大概需要 5-15 分钟）： 验证分配设置：在浏览器中输入上述分配的域名 http://xxxx.cloudfront.net/powered-by-aws-white.png ，验证是否能在浏览器中出现对应的图片\n点击进入创建的分配，选择源和源组，点击创建源： 在源域名中选择Lab1中创建的负载均衡器： 选择源协议策略： 点击创建： 创建Cloudfront行为和缓存/回源策略  进入创建好的分配，选择行为，勾选默认行为，点击编辑： 将默认行为的源或源组从S3更改为Lab1中创建的ALB： 在缓存策略的下拉框中选择Managed-CachingDisabled的缓存策略。\n选择创建缓存策略 输入缓存策略的名字，并将TTL全部设置为0（设置为 0 表示不缓存）： 点击创建缓存策略 点击刷新按钮，选择新创建的缓存策略： 点击创建源请求策略： 输入源请求策略的名字： 并选择将所有的Headers，Cookies，Query strings回源，然后点击创建源请求策略： 点击刷新并选择刚创建的源请求策略： 点击保存更改： 点击创建行为： 路径模式中输入/*.PNG（表示png文件到S3回源，其他的走ALB），并源和源组中选择S3存储桶作为源： 其他选项保持默认，点击创建： 测试验证  修改Lab1中的db.php，将\n\u0026lt;a href=\u0026quot;https://aws.amazon.com/what-is-cloud-computing\u0026quot;\u0026gt;\u0026lt;img src=\u0026quot;powered-by-aws-white.png\u0026quot; style=\u0026quot;background-color:black;\u0026quot; alt=\u0026quot;Powered by AWS Cloud Computing\u0026quot;\u0026gt;\u0026lt;/a\u0026gt; 中的\nhttps://aws.amazon.com/what-is-cloud-computing 更改为\nhttp://xxxx.cloudfront.net/powered-by-aws-white.png 然后刷新测试验证即可。\n监控  使用了CloudFront加速后的性能\n在浏览器中输入输入网站URL https://www.uptrends.com/tools/cdn-performance-check ，并在I want to test输入框输入分配的域名http://xxxx.cloudfront.net/db.php ，点击start test按钮。\n未使用CloudFront，直接访问Lab1里面的ALB域名的性能\n在浏览器中输入输入网站URL https://www.uptrends.com/tools/cdn-performance-check ，并在I want to test输入框输入分配的域名http://\u0026lt;Lab1里面的ALB域名\u0026gt;/db.php ，点击start test按钮。\n也可以查看不同国家和城市的访问测试结果\n如下图所示点击某一条测试结果左侧的箭头，展开请求响应的详情\n下图红框处可以看到响应被发送到的Cloudfront的边缘站点的编码 ~完~\n"
+},
+{
+	"uri": "/3-tgw/01-create-vpc.html",
+	"title": "01-创建本实验环境",
+	"tags": ["VPC"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建4个VPC  登录到AWS Console，打开VPC服务， 点击 Your VPCs，点击Create VPC按钮 在Name tag输入VPC Spoke-2，在IPv4 CIDR block输入 10.2.0.0/16，点击 Create VPC按钮 选中创建好的VPC Spoke-2，从Actions选择下拉列表中的Edit DNS hostnames 勾上 Enable，点击 Save changes按钮。 创建IGW  点击Internet Gateways，点击 Create internet gateway 在Name tag里面输入spoke2，点击 Create internet gateway 选择Actions下拉列表里面的Attach to VPC 从Select a VPC里面选择 前面创建好的vpc-spoke2点击 Attach internet gateway按钮。 创建route table  点击Route Tables，点击 Create route table按钮。 在Name tag选择建好的VPC Spoke2，点击Create 点击 Route Table ID后的链接 选择Routes，点击Edit routes按钮 点击Add route 在Destination列输入0.0.0.0/0，在target里面选择Internet Gateway，接着选择前面创建的IGW，点击Save routes按钮 创建subnet  点击Subnets，点击Create subnet按钮 在Name tag输入 VPC Spoke-2-1a，VPC选择前面创建的Spoke-2，Availability Zone选择1a结尾的，IPv4 CIDR block里面输入10.2.0.0/24，点击Create按钮。 重复上面的步骤，创建VPC Spoke-2-1b，在Name tag输入VPC Spoke-2-1b，VPC选择前面创建的Spoke-2，Availability Zone选择1b结尾的，IPv4 CIDR block里面输入10.2.1.0/24，点击Create按钮。 为VPC Spoke-2-1a关联前面创建的Route table：\n选择VPC Spoke-2-1a，点击Edit route table association按钮 选择之前创建的route table：Spoke2，点击save按钮 创建keypair  打开EC2服务 点击Key Pairs，点击Create key pair按钮 在Name输入lab3,File format根据您当前的使用的ssh软件选择：pem or ppk；点击Create key pair按钮后会下载一个pem或ppk到您的本地机器上 创建EC2实例  打开EC2服务 点击Instances， 点击Launch instances按钮 点击 Amazon Linux 2 AMI (HVM), SSD Volume Type 后面的Select按钮 选择t3.small，点击Next:Configure Instance Details按钮 在Network选择前面创建的VPC Spoke-2，subnet选择Spoke-2-sub-1a，Auto-assign Public IP选择Enable，点击Next:Add Storage按钮 点击Next:Add Tags按钮，Key填入Name，Value填入lab3，点击Next:Configure Security Group Security group name输入lab3，修改Description，点击Add Rule按钮，从Type列表里面选择ICMP，点击Review and Launch按钮。 点击Launch按钮 选择之前创建的keypair，勾选 I acknowledge，点击 Launch Instances按钮。修改实例名字为Spoke2-sub-1a\n创建其他EC2  如下表分别创建以下4个VPC和4个EC2实例（分别位于：Hub-sub-1a、Spoke1-sub-1a、Spoke2-sub-1a、Spoke3-sub-1a）\n   VPC名称 CIDR 可用区 子网 EC2 Name     VPC Hub 10.0.0.0/16 VPC Hub-sub-1a in AZ1 10.0.0.0/24 hub-sub-1a   VPC Hub 10.0.0.0/16 VPC Hub-sub-1b in AZ2 10.0.1.0/24 /   VPC Spoke-1 10.1.0.0/16 VPC Spoke-1-sub-1a in AZ1 10.1.0.0/24 spoke1-sub-1a   VPC Spoke-1 10.1.0.0/16 VPC Spoke-1-sub-1b in AZ2 10.1.1.0/24 /   VPC Spoke-2 10.2.0.0/16 VPC Spoke-2-sub-1a in AZ1 10.2.0.0/24 spoke2-sub-1a   VPC Spoke-2 10.2.0.0/16 VPC Spoke-2-sub-1b in AZ2 10.2.1.0/24 /   VPC Spoke-3 10.3.0.0/16 VPC Spoke-3-sub-1a in AZ1 10.3.0.0/24 spoke3-sub-1a   VPC Spoke-3 10.3.0.0/16 VPC Spoke-3-sub-1b in AZ2 10.3.1.0/24 /    注意，这几个EC2必须都创建完毕再开始下一步哦。\n "
+},
+{
+	"uri": "/3-tgw/02-vpc-peering.html",
+	"title": "02-创建VPC对等连接",
+	"tags": ["VPC", "Peering"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建VPC Peering Connection  在VPC console中选择Peering Connnections按钮，点击Create Peering Connection 输入Peering connection name tag、VPC (Requester)为Spoke-3、VPC (Accepter)为Spoke-1 选择目标 点击Creating Peering Connection 观察现在的Peering Connection 为Pending Acceptance状态 点击Actions，选择Accept Request 选择Yes，Accept 此处的截图的区域其实并不是新加坡区域，所以截图的Region仅供参考，请学员操作时务必确保在新加坡区域。\n 观察现在的Peering Connection 为Active状态 更新Spoke-1和Spoke-3的路由表  点击Route Tables，选中Spoke1，点击Edit routes： 添加一条路由，Destination为10.3.0.0/16，Target 选择Peering Connection 选择上一步创建好的Peering Connection ID，选择Save Routes 同样，更新Spoke3路由表，点击Route Tables，选中Spoke3，点击Edit routes： 添加一条路由，Destination为10.1.0.0/16，Target 选择Peering Connection 选择前面创建好的Peering Connection ID，选择Save Routes 验证测试VPC Peering  远程登录EC2实例Spoke1-sub-1a，PingEC2实例Spoke3-sub-1a\ncd \u0026lt;lab3.pem文件所在目录\u0026gt; chmod 400 lab3.pem ssh -i lab3.pem ec2-user@\u0026lt;PUBLIC IP of Spoke1-sub-1a\u0026gt; 然后ping Ping通，证明VPC Peering正常工作\n"
+},
+{
+	"uri": "/3-tgw/03-tgw.html",
+	"title": "03-使用TGW创建互联环境",
+	"tags": ["Transit GW"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建Transit Gateway  点击VPC窗口的Transit Gateway按钮，点击Create Transit Gateway 输入Name tag和Description 点击创建TGW， 创建Transit Gateway 附件  点击VPC窗口的Transit Gateway Attachments按钮，点击Create Transit Gateway Attachments按钮 在Transit Gateway ID那栏选中之前步骤创建的TGW\nAttachment type选择VPC\n在VPC Attachment部分，输入Attachment name tag\nVPC ID选择之前创建的VPC Spoke-1\n在Subnet IDs部分勾选全部2个Subnets\n再点击创建，可以看到console上已经显示一个名为VPC Spoke-1的VPC attachment 重复上述步骤，继续创建Attachment VPC Spoke-2和VPC Hub：\n点击Create Transit Gateway Attachments按钮 在Transit Gateway ID那栏选中之前创建的TGW\nAttachment type选择VPC\n在VPC Attachment部分，输入Attachment name tag\nVPC ID选择之前创建的VPC Spoke-2\n在Subnet IDs部分勾选全部2个Subnets\n再点击创建，可以看到console上已经显示一个名为的VPC Spoke-2的VPC attachment 点击Create Transit Gateway Attachments按钮 在Transit Gateway ID那栏选中之前创建的TGW\nAttachment type选择VPC\n在VPC Attachment部分\n输入Attachment name tag\nVPC ID选择之前创建的VPC Hub\n在Subnet IDs部分勾选全部2个Subnets\n再点击创建，可以看到console上已经显示一个名为的VPC Hub的VPC attachment 创建和配置Transit Gateway 路由表  点击Console里的Transit Gateway Route Tables，选中默认Route Table，选择Associations，依次选中不同的Attachment 点击Delete association删除所有关联 然后点击Create Transit Gateway Route Table按钮创建一个新的路由表 输入Name tag为Spokes，选择Transit Gateway ID为之前创建的TGW 点击创建好的新路由表 选中建立好的Spokes路由表，选择Create association按钮 在Create association console中，choose attachment to associate栏选择VPC Spoke-1 点击Create association 创建association 重复上述步骤，将VPC Spoke-2也associate到Spokes路由表中，选中建立好的Spokes路由表，选择Create association按钮 在Create association console中，choose attachment to associate栏选择VPC Spoke-2 点击Create association 创建association 创建Hub路由表，点击Create Transit Gateway Route Table按钮创建一个新的路由表 输入Name tag为Hub，选择Transit Gateway ID为之前创建的TGW 点击创建好的新路由表 将VPC Hub associate到Hub路由表中，选中建立好的Hub路由表，选择Create association按钮 在Create association console中，choose attachment to associate栏选择VPC Hub 点击Create association 创建association 配置路由传播  点击Transit Gateway Route Tables console，选中Spokes路由表，选择Propagations，点击Create Propagations 在Choose attachment to prpagate栏中选择VPC Hub 点击创建 再次点击Transit Gateway Route Tables console，选中Hub路由表，选择Propagations，点击Create Propagations 在Choose attachment to prpagate栏中选择VPC Spoke-1， 点击创建 重复上述步骤，将Spoke-2的路由也propagate到Hub路由表中\n再次点击Transit Gateway Route Tables console，选中Hub路由表，选择Propagations，点击Create Propagations 在Choose attachment to prpagate栏中选择VPC Spoke-2 点击创建 配置各子网路由表  在VPC console中选择Route Tables，选中之前创建的路由表Spoke1，选择Routes，选择Edit routes\n点击Add route，添加一条路由，Destination栏填写10.0.0.0/8（此处注意：创建VPC时，我们最大的CIDR是16位的，但是创建路由时是可以指定8位的），Target栏选择Transit Gateway 选中所创建的TGW 点击Save routes\n在VPC console中选择Route Tables，选中之前创建的路由表Spoke2，选择Routes，选择Edit routes\n点击Add route，添加一条路由，Destination栏填写10.0.0.0/8，Target栏选择Transit Gateway 选中之前所创建的TGW 点击Save routes\n在VPC console中选择Route Tables，选中之前创建的路由表Hub，选择Routes，选择Edit routes\n点击Add route，添加一条路由，Destination栏填写10.0.0.0/8，Target栏选择Transit Gateway 选中之前所创建的TGW 点击Save routes\n验证测试  远程登录EC2实例Spoke1-sub-1a，PingEC2实例Spoke2-sub-1a Ping不通，证明两个Spoke VPC内的EC2实例不能互访\n远程登录EC2实例Spoke1-sub-1a，PingEC2实例Hub-sub- 1a 可以Ping通，证明Spoke1 VPC内的EC2实例可以和Hub VPC的EC2实例互访\n远程登录EC2实例Spoke2-sub-1a，PingEC2实例Hub-sub- 1a 可以Ping通，证明Spoke1 VPC内的EC2实例可以和Hub VPC的EC2实例互访。\n~完~\n"
+},
+{
+	"uri": "/4-monitor/01-vpc-flow-logs.html",
+	"title": "01-设置VPC Flow Logs",
+	"tags": ["VPC", "Flow Logs"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n 创建 Log Group  首先我们需要创建一个 CloudWatch Log Group，来存储我们在这一节中需要记录的Log日志信息。\n  控制台导航到“CloudWatch”，选择 Log -\u0026gt; Log groups，点击右上方的 “Create log group”   输入Log group name 为shenzhen-im-day，点击 Create 按钮   创建VPC Flow Logs  在本章节中，您将为VPC Hub创建流日志。\n 控制台导航到“VPC” – “Your VPCs”  选择“VPC Hub”, 单击“Flow Logs” 选项，然后单击 “Create flow log” 将 过滤器 “Filter” 改为 “All” 将 最大聚合间隔 “Maximum aggregation interval” 设置为1分钟 “1 minute” 将 目标日志组 “Destination log group” 设置为 “shenzhen-im-day” 单击 设置权限 “Set Up Permissions” 以创建新的IAM角色  “Role Name” 保持默认 单击 允许 “Allow” 然后导航回到 创建流日志”Create flow log” 界面  单击IAM角色旁边的刷新按钮，然后选择您刚创建的IAM角色  单击 创建 “Create”  生成测试流量  现在，在CloudWatch中收集了往返于VPC Hub中网络接口的IP流量。现在我们需要在VPC Hub中的EC2实例生成一些流量，例如使用网络工具iperf在Hub中的实例“hub-sub-1a” 和Spoke1中的实例 “spoke1-sub-1a” 之间生成流量。\n首先，您需要更新Spoke1中Amazon EC2实例的安全组，以允许iperf服务器接收传入流量。\n 导航到EC2控制台，在左边的菜单中选择 “EC2” – “Instances” 选择EC2实例 “spoke1-sub-1a” 单击下部窗格中的“安全组”以查看和编辑其规则  单击 编辑入站规则 “Edit inbound rules”  添加规则以允许来自VPC Hub中Amazon EC2实例的TCP端口5201。添加子网CIDR 10.0.0.0/24  单击 保存规则 ” Save rules” 在Spoke1中的EC2实例“spoke1-sub-1a”上执行以下操作 通过SSH进入VPC B中的EC2实例  ssh -i lab3.pem ec2-user@\u0026lt;PUBLIC IP\u0026gt;  安装iperf  sudo yum install iperf3 -y  启动iperf服务器  iperf3 -s 在VPC Hub中的EC2实例 “hub-sub-1a” 上执行以下操作\n 通过SSH进入VPC A中的EC2实例 “EC2 VPC A – AZ1”  ssh -i lab3.pem ec2-user@\u0026lt;PUBLIC IP\u0026gt;  安装iperf  sudo yum install iperf3 -y  设置2 个数据流并发、持续传输30秒的TCP连接到Spoke1中的EC2实例“spoke-sub-1a”（请使用私有IP）  iperf3 -c \u0026lt;PRIVATE IP OF SPOKE1 INSTANCE 10.1.0.X\u0026gt; -P 2 -t 30 如下所示 在CloudWatch中查看VPC Flow Logs流日志  VPC Flow logs可以发送到Amazon S3存储桶或CloudWatch。在前面的章节中，我们配置了从VPC Hub发送到CloudWatch的流日志。我们现在可以导航到CloudWatch查看日志。  在“Flow Logs”选项卡下，单击目标“ shenzhen-im-day”以导航到CloudWatch\n发布到 CloudWatch 时，流日志数据将发布到日志组，并且每个网络接口在日志组中具有唯一的日志流。日志流包含流日志记录。您可以在同一个日志组里创建多个流日志。  单击网络接口（ENI）日志流以查看该接口的流日志记录 流日志的剖析：  可选：要查看列表中每个ENI附加到的Amazon EC2实例，请导航至“ EC2” –“ Network Interfaces”  选择一个ENI，然后单击 实例ID “Instance id”   查询流日志以获取见解  CloudWatch Logs Insights使您能够交互式搜索和分析CloudWatch Logs中的日志数据，包括VPC流日志。您可以执行查询以帮助您更有效地响应日常运维问题。在本章节中，您将运行一个查询，显示字节数传输最多的前10个连接。\n 导航到“CloudWatch” – “Insights” 单击 选择日志组 “Select log group(s)” ，选择“shenzhen-im-day” 单击 简单查询 “Simple queries” – “VPC flow log queries” （VPC流日志查询）– “Top 10 byte transfers by source and destination IP addresses” （按源IP地址和目标IP地址传输的前10个字节） 单击 运行查询 “Run query” 查看查询结果   在这个结果内，我们可以看到在这个 VPC 内传输数据量最大的源/目标 IP地址，并且进行了从大到小的排序。\n"
+},
+{
+	"uri": "/4-monitor/02-cloudwatch.html",
+	"title": "02-CloudWatch监控",
+	"tags": ["CloudWatch"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n Amazon CloudWatch 是一个指标存储库。AWS 服务将指标放入存储库中，然后根据这些指标检索统计。在本章节中，您将查看 CloudWatch 中可用的一些网络指标，设置阈值警报，并设置仪表板以查看一组指标。\n配置CloudWatch审核指标   导航到“CloudWatch” – “Metrics” 在 所有指标 “All Metrics”, 导航到 “Transit Gateway” – “Per-TransitGateway Metrics”  选择度量标准 “BytesOut” 您可以使用该指标来查看TGW 的总体网络流量。 取消选择上面选择的两个指标  在“All Metrics” 下选择“All” 单击“EC2” – “Per-Instance Metrics” （基于实例的指标） 您可以使用此指标来查看“网络输入/输出”统计信息（以字节为单位）。还可以在CloudWatch中查看连接到EC2实例的每个ENI的Packets In / Out统计信息。  通过在搜索中输入\u0026rdquo; Network\u0026rdquo;，筛选名称中包含“Network”的指标列表 选择 VPC Hub 中 EC2 实例的指标\u0026rdquo; NetworkIn “（网络输入）和\u0026rdquo; NetworkOut\u0026rdquo;（网络输出）  创建报警  您可以创建CloudWatch警报，用于监视指定的 CloudWatch 指标。当指标达到您指定的阈值时，CloudWatch 将自动向您发送通知。\n在本节中，您将创建一个警报，用于监视EC2的流量的状态。如果 EC2的流量超过了1 Gbps，将发送电子邮件通知。\n 导航到“CloudWatch” – “Alarms”  单击 “Create alarm” 单击“Select metric” 单击 “EC2” 、 “Per-Instance Metrics”、“NetworkOut”  目前看到我们模拟流量之后，EC2的流量现在已经将为差不多是零的状态 单击 右下方的 “Select metric”  在指标配置下，将统计信息更改为 最大值 “Maximum” 将时间段更改为1 分钟 “1 minute”  在Conditions（条件）配置里，更改条件 “Whenever NetworkOut is\u0026hellip;” 为 “Greater/Equal” than “1000000000” （当值高于1,000,000,000个字节时，约等于1Gbps） 单击“Next”  在“Select an SNS topic” 选择新建 “Create new topic” 输入你喜欢的主题名字，例如 “shenzhen-im-day-EC2alarm” 输入您要接收警报通知的电子邮件地址。请输入有效的电子邮件地址，以便在后面的步骤中可以接收通知 单击“Create topic” 单击“Next”  输入你喜欢的警报名字，例如 “shenzhen-im-day-EC2alarm” 单击“Next” 审查配置并单击“Create alarm”  警报的\u0026quot;状态\u0026quot;可能显示\u0026quot;数据不足\u0026rdquo;，直到警报收到足够的数据点。\n在\u0026quot;Actions\u0026quot;下，您可能会看到“Pending confirmation”（待定确认），这意味着您尚未确认订阅。进入您的电子邮件，打开来自\u0026rdquo; AWS Notifications\u0026quot;的新邮件并确认订阅（点击邮件中的连接）。 点击邮件的确认连接之后，刷新界面，就可以看到Action 的地方有变化了。 再次模拟流量，触发告警  这个时候，我们依照之前的方法，登录到Spoke1中的EC2实例“spoke1-sub-1a”上执行以下操作。\n 通过SSH进入VPC B中的EC2实例  ssh -i lab3.pem ec2-user@\u0026lt;PUBLIC IP\u0026gt;  启动iperf服务器  iperf3 -s 在VPC Hub中的EC2实例 “hub-sub-1a” 上执行以下操作\n 通过SSH进入VPC A中的EC2实例 “EC2 VPC A – AZ1”  ssh -i lab3.pem ec2-user@\u0026lt;PUBLIC IP\u0026gt; 设置2 个数据流并发、持续传输30秒的TCP连接到Spoke1中的EC2实例“spoke-sub-1a”（请使用私有IP）\niperf3 -c \u0026lt;PRIVATE IP OF SPOKE1 INSTANCE 10.1.0.X\u0026gt; -P 2 -t 30 等待30秒流量传完，我们再查看CloudWatch界面，查看CloudWatch的告警状态。 同时，我们订阅的邮箱也可以看到相应的告警了。 创建仪表板  Amazon CloudWatch 仪表板主页是可自定义的，可用于在单个视图中监视资源，甚至用于跨不同区域的资源。您可以使用 CloudWatch 仪表板为 AWS 资源创建指标和警报的自定义视图。\n在本章节中，您将为在实验2中配置的与Transit Gateway关联的Site-to-Site VPN创建CloudWatch仪表板。\n 导航到仪表板 \u0026quot; CloudWatch \u0026quot; = \u0026quot; Dashboards \u0026quot; 单击创建仪表板 “Create dashboard” 输入你喜欢的名字，例如 “Shenzhen-im-day”  单击“Create dashboard”  选择Line 选择 Metrics 选择右下方的 Configure 导航到 “Transit Gateway” – “Per-TransitGateway Metrics” 选择“ByetsIn” 单击“Create Widget” 然后，小部件将放置在仪表板上。  你也可以接着添加其他的服务的任何指标到这个仪表盘中，这个主要根据自己要关注的服务和关键的指标。 完成后单击 “Save dashboard” 保存  "
+},
+{
+	"uri": "/4-monitor/03-cloudtrail.html",
+	"title": "03-CloudTrail审计跟踪（可选）",
+	"tags": ["CloudTrail"],
+	"description": "",
+	"content": " 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。\n AWS CloudTrail 是一项支持对您的 AWS 账户进行监管、合规性检查、操作审核和风险审核的服务。借助 CloudTrail，您可以记录日志、持续监控并保留与整个 AWS 基础设施中的操作相关的账户活动。CloudTrail 提供 AWS 账户活动的事件历史记录，这些活动包括通过 AWS 管理控制台、AWS 开发工具包、命令行工具和其他 AWS 服务执行的操作。此事件历史记录可以简化安全性分析、资源更改跟踪和问题排查工作。 此外，您可以使用 CloudTrail 来检测 AWS 账户中的异常活动。这些功能可帮助您简化分析和问题排查。\n在本章节中，您将在您的帐户上启用 CloudTrail，触发Site-to-Site VPN的故障，然后对触发失败的内容进行审核。\n创建CloudTrail跟踪   导航到“CloudTrail” – “Trails” 单击“Create Trail” 输入一个你喜欢的名字，例如 “Shenzhen-im-day-trail” AWS KMS alias 处，填写“Shenzhen-im-day-kms” 单击“Next”  勾选Insights event  点击Next 点击Create Trail  断开Spoke2的TGW连接   导航到“VPC” – “Transit Gateway Attachments”  选择Spoke2这个attachment 单击 “Actions”, “Delete“ 点击“Delete”，确认删除  回顾 CloudTrail 事件的历史记录  使用 CloudTrail 对 TGW连接删除的原因进行审核。\n 导航到\u0026rdquo; CloudTrail \u0026quot; 、 \u0026quot; Event history\u0026rdquo; 从最近的发生的事件来，很容易找到我们刚才删除操作的记录。  如果点击进去查看详情，我们也能看到是谁，在什么时间，做了什么事情。并且这些日志也会存储到S3中，可以做进一步分析。   恭喜你，你已经完成了此次 Networking Day 的所有实验。\n~完~\n"
+},
+{
+	"uri": "/about.html",
+	"title": "关于我们",
+	"tags": [],
+	"description": "",
+	"content": " 警告：本站所有技术文章和截图，仅供读者作为学习参考资料，严禁用于违法犯罪活动，否则产生的一切后果由读者自行承担，本站和所有作者均不承担任何法律及连带责任！\n   作者： Weiqiong Chen, Robin Long 更新： 2022/04/01  "
+},
+{
+	"uri": "/tags/account.html",
+	"title": "Account",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/alb.html",
+	"title": "ALB",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/aurora.html",
+	"title": "Aurora",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/categories.html",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/cloudfront.html",
+	"title": "CloudFront",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/cloudtrail.html",
+	"title": "CloudTrail",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/cloudwatch.html",
+	"title": "CloudWatch",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/ec2.html",
+	"title": "EC2",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/elb.html",
+	"title": "ELB",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/flow-logs.html",
+	"title": "Flow Logs",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/igw.html",
+	"title": "IGW",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/lamp.html",
+	"title": "LAMP",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/monitoring.html",
+	"title": "Monitoring",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/peering.html",
+	"title": "Peering",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/s3.html",
+	"title": "S3",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags.html",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/tgw.html",
+	"title": "TGW",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/transit-gw.html",
+	"title": "Transit GW",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/vpc.html",
+	"title": "VPC",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/vpc-flow.html",
+	"title": "VPC Flow",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Peering on AWS Networking Day</title>
+    <link>/tags/peering.html</link>
+    <description>Recent content in Peering on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/tags/peering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lab3-多网络互联(Peering/TGW)</title>
+      <link>/3-tgw.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3-tgw.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 实验目标  本实验目的是在AWS上搭建一个多网络互联的环境，网络架构图如下： 实验任务   VPC Spoke-1 内的 EC2 可以和 VPC Spoke-3 内的 EC2 通信 VPC Spoke-1 内的 EC2 不可以和 VPC Spoke-2 内的 EC2 通信 VPC Spoke-1 和 VPC Spoke-2内的 EC2 可以和 VPC Hub 内的 EC2 通信  主要创建4个VPC（包含IGW，route table，2个subnet）和4个EC2实例
+   VPC名称 CIDR 可用区 子网 EC2 Name     VPC Hub 10.0.0.0/16 VPC Hub-sub-1a in AZ1 10.0.0.0/24 hub-sub-1a   VPC Hub 10.</description>
+    </item>
+    
+    <item>
+      <title>02-创建VPC对等连接</title>
+      <link>/3-tgw/02-vpc-peering.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/3-tgw/02-vpc-peering.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建VPC Peering Connection  在VPC console中选择Peering Connnections按钮，点击Create Peering Connection 输入Peering connection name tag、VPC (Requester)为Spoke-3、VPC (Accepter)为Spoke-1 选择目标 点击Creating Peering Connection 观察现在的Peering Connection 为Pending Acceptance状态 点击Actions，选择Accept Request 选择Yes，Accept 此处的截图的区域其实并不是新加坡区域，所以截图的Region仅供参考，请学员操作时务必确保在新加坡区域。
+ 观察现在的Peering Connection 为Active状态 更新Spoke-1和Spoke-3的路由表  点击Route Tables，选中Spoke1，点击Edit routes： 添加一条路由，Destination为10.3.0.0/16，Target 选择Peering Connection 选择上一步创建好的Peering Connection ID，选择Save Routes 同样，更新Spoke3路由表，点击Route Tables，选中Spoke3，点击Edit routes： 添加一条路由，Destination为10.1.0.0/16，Target 选择Peering Connection 选择前面创建好的Peering Connection ID，选择Save Routes 验证测试VPC Peering  远程登录EC2实例Spoke1-sub-1a，PingEC2实例Spoke3-sub-1a
+cd &amp;lt;lab3.pem文件所在目录&amp;gt; chmod 400 lab3.pem ssh -i lab3.pem ec2-user@&amp;lt;PUBLIC IP of Spoke1-sub-1a&amp;gt; 然后ping Ping通，证明VPC Peering正常工作</description>
+    </item>
+    
+  </channel>
+</rss>

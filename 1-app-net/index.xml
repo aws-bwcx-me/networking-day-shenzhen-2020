@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lab1-构建3层应用的生产网络 on AWS Networking Day</title>
+    <link>/1-app-net.html</link>
+    <description>Recent content in Lab1-构建3层应用的生产网络 on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/1-app-net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>01-网络环境配置</title>
+      <link>/1-app-net/01-network.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1-app-net/01-network.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 此处主要配置VPC，IGW，route table，public subnet，private subnet
+创建VPC  登录到AWS Console，打开VPC服务， 点击 Your VPCs，点击Create VPC按钮 在Name tag输入vpc1，在IPv4 CIDR block输入 192.168.0.0/16，点击 Create VPC按钮 选中创建好的vpc1，从Actions选择下拉列表中的 Edit DNS hostnames 勾上 Enable，点击 Save changes按钮。 创建IGW  点击Internet Gateways，点击 Create internet gateway 在Name tag里面输入vpc1，点击 Create internet gateway 选择Actions下拉列表里面的Attach to VPC 从Select a VPC里面选择 前面创建好的vpc1点击 Attach internet gateway按钮。 创建route table  点击Route Tables，点击 Create route table按钮。 在Name tag vpc1 点击 Route Table ID后的链接 选择Routes，点击Edit routes按钮 点击Add route 在Destination列输入0.</description>
+    </item>
+    
+    <item>
+      <title>02-应用部署和配置</title>
+      <link>/1-app-net/02-app.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1-app-net/02-app.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建数据库  此处的数据库平台包括：Aurora MySQL 平台和引擎。
+在AWS的Console上搜索RDS，打开Amazon RDS服务。  创建DB Subnet group  点击Subnet groups，点击Create DB Subnet Group按钮 在Name和Description分别输入lab1，VPC选择前面创建的vpc1 Add subnets选择上一个步骤里面创建的两个private subnet(注意看CIDR来区分)，点击Create按钮  创建Aurora MySQL database  点击Create database按钮 默认选择Standard create，
+在Engine type默认选择Amazon Aurora，
+在Edition默认选择 Amazon Aurora with MySQL compatibility
+在Capacity type默认选择 Provisioned，
+在Version选择最新版本 Aurora(MySQL5.7) 2.09.0，
+在Templates默认选Production
+在DB cluster identifier里面输入database-lab1，
+在Password输入你设定的密码 [注意：要记录好密码]
+请牢记此处你设置的密码。
+ 在DB instance size选择 Bustable classes(includes t classes) ,
+在下拉框中选择db.t3.small 
+在Availability &amp;amp; durability默认选择 Create an Aurora Replica or Reader node in a different AZ (recommended for scaled availability) 在Connectivity里面选择前面创建的vpc1</description>
+    </item>
+    
+    <item>
+      <title>03-负载均衡配置</title>
+      <link>/1-app-net/03-elb.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1-app-net/03-elb.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 此处的内容包括：Target group、AutoScalingGroup、ALB
+创建Target Group  点击Target Groups，点击Create target group按钮 Target group name输入lab1，VPC选择vpc1，点击next按钮 点击Create target group按钮 创建AutoScaling Group  点击Auto Scaling Group链接，点击Create an Auto Scaling group按钮 在name输入lab1，在Launch template列表里选择上一步创建的launch template：lab1，点击next按钮 VPC选择vpc1，Subnet选择publicsubnet1和publicsubnet2，点击next按钮 勾选Enable load balancing，target group选择之前创建的target group：lab1，勾选ELB，点击next按钮 修改Group size，选择Target tracking scaling policy，点击skip to review按钮； 然后点击Create Auto Scaling Group按钮 创建ALB  点击Load Balancers，点击Create Load Balancer按钮 点击Application Load Balancer下面的Create按钮 输入name：lab1，VPC选择vpc1，分别选择两个子网publicsubnet1和publicsubnet2，其他保持默认，点击Next按钮 忽略警告，选择之前创建的安全组security group：lab1，点击next按钮 选择 Existing target group，选择 lab1，点击next按钮 会看到已有Auto Scaling Group里面配置的2台EC2实例，点击next按钮，然后点击下一页的Create按钮。 然后等待这个Application Load Balancer状态state变为active；拷贝它的DNS name（此处为 lab1-1377874568.</description>
+    </item>
+    
+  </channel>
+</rss>

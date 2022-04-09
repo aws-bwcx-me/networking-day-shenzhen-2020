@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+  </url>
+  
+  <url>
+    <loc>/0-prepare.html</loc>
+  </url>
+  
+  <url>
+    <loc>/1-app-net.html</loc>
+  </url>
+  
+  <url>
+    <loc>/2-accelerate.html</loc>
+  </url>
+  
+  <url>
+    <loc>/3-tgw.html</loc>
+  </url>
+  
+  <url>
+    <loc>/4-monitor.html</loc>
+  </url>
+  
+  <url>
+    <loc>/1-app-net/01-network.html</loc>
+  </url>
+  
+  <url>
+    <loc>/1-app-net/02-app.html</loc>
+  </url>
+  
+  <url>
+    <loc>/1-app-net/03-elb.html</loc>
+  </url>
+  
+  <url>
+    <loc>/2-accelerate/01-content.html</loc>
+  </url>
+  
+  <url>
+    <loc>/2-accelerate/02-cloudfront.html</loc>
+  </url>
+  
+  <url>
+    <loc>/3-tgw/01-create-vpc.html</loc>
+  </url>
+  
+  <url>
+    <loc>/3-tgw/02-vpc-peering.html</loc>
+  </url>
+  
+  <url>
+    <loc>/3-tgw/03-tgw.html</loc>
+  </url>
+  
+  <url>
+    <loc>/4-monitor/01-vpc-flow-logs.html</loc>
+  </url>
+  
+  <url>
+    <loc>/4-monitor/02-cloudwatch.html</loc>
+  </url>
+  
+  <url>
+    <loc>/4-monitor/03-cloudtrail.html</loc>
+  </url>
+  
+  <url>
+    <loc>/about.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/account.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/alb.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/aurora.html</loc>
+  </url>
+  
+  <url>
+    <loc>/categories.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/cloudfront.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/cloudtrail.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/cloudwatch.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/ec2.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/elb.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/flow-logs.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/igw.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/lamp.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/monitoring.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/peering.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/s3.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/tgw.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/transit-gw.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/vpc.html</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/vpc-flow.html</loc>
+  </url>
+  
+</urlset>

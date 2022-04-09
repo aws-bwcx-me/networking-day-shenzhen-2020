@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="cn" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="AWS Technical Event">
+<meta name="author" content="Weiqiong Chen">
+
+    <link rel="icon" href="../images/favicon.ico" type="image/png">
+
+    <title>03-使用TGW创建互联环境 :: AWS Networking Day</title>
+
+    
+    <link href="../css/nucleus.css?1649508493" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1649508493" rel="stylesheet">
+    <link href="../css/hybrid.css?1649508493" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1649508493" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1649508493" rel="stylesheet">
+    <link href="../css/auto-complete.css?1649508493" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1649508493" rel="stylesheet">
+    <link href="../css/theme.css?1649508493" rel="stylesheet">
+    <link href="../css/tabs.css?1649508493" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1649508493" rel="stylesheet">
+    
+    <link href="../css/theme-aws.css?1649508493" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1649508493"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../3-tgw/03-tgw.html">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+   <a href="../" title="Go Index">
+       <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+   </a>
+ </div>
+ 
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1649508493"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1649508493"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1649508493"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='../'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/0-prepare.html" title="Lab0-实验环境准备" class="dd-item
+        
+        
+        
+        ">
+      <a href="../0-prepare.html">
+          Lab0-实验环境准备
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-app-net.html" title="Lab1-构建3层应用的生产网络" class="dd-item
+        
+        
+        
+        ">
+      <a href="../1-app-net.html">
+          Lab1-构建3层应用的生产网络
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/01-network.html" title="01-网络环境配置" class="dd-item ">
+        <a href="../1-app-net/01-network.html">
+        01-网络环境配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/02-app.html" title="02-应用部署和配置" class="dd-item ">
+        <a href="../1-app-net/02-app.html">
+        02-应用部署和配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/03-elb.html" title="03-负载均衡配置" class="dd-item ">
+        <a href="../1-app-net/03-elb.html">
+        03-负载均衡配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-accelerate.html" title="Lab2-应用的静态和动态加速" class="dd-item
+        
+        
+        
+        ">
+      <a href="../2-accelerate.html">
+          Lab2-应用的静态和动态加速
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/01-content.html" title="01-源内容" class="dd-item ">
+        <a href="../2-accelerate/01-content.html">
+        01-源内容
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/02-cloudfront.html" title="02-配置静态和动态加速" class="dd-item ">
+        <a href="../2-accelerate/02-cloudfront.html">
+        02-配置静态和动态加速
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-tgw.html" title="Lab3-多网络互联(Peering/TGW)" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../3-tgw.html">
+          Lab3-多网络互联(Peering/TGW)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/01-create-vpc.html" title="01-创建本实验环境" class="dd-item ">
+        <a href="../3-tgw/01-create-vpc.html">
+        01-创建本实验环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/02-vpc-peering.html" title="02-创建VPC对等连接" class="dd-item ">
+        <a href="../3-tgw/02-vpc-peering.html">
+        02-创建VPC对等连接
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/03-tgw.html" title="03-使用TGW创建互联环境" class="dd-item active">
+        <a href="../3-tgw/03-tgw.html">
+        03-使用TGW创建互联环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-monitor.html" title="Lab4-VPC网络监控和告警" class="dd-item
+        
+        
+        
+        ">
+      <a href="../4-monitor.html">
+          Lab4-VPC网络监控和告警
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/01-vpc-flow-logs.html" title="01-设置VPC Flow Logs" class="dd-item ">
+        <a href="../4-monitor/01-vpc-flow-logs.html">
+        01-设置VPC Flow Logs
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/02-cloudwatch.html" title="02-CloudWatch监控" class="dd-item ">
+        <a href="../4-monitor/02-cloudwatch.html">
+        02-CloudWatch监控
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/03-cloudtrail.html" title="03-CloudTrail审计跟踪（可选）" class="dd-item ">
+        <a href="../4-monitor/03-cloudtrail.html">
+        03-CloudTrail审计跟踪（可选）
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/about.html" title="关于我们" class="dd-item
+        
+        
+        
+        ">
+      <a href="../about.html">
+          关于我们
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+	<h5 class="copyright">CopyRight: &copy; 2022 bwcx.me.
+		<BR>Author: Weiqiong Chen/Robin Long
+		<BR>Update: 2022-04
+	<h5>
+</left>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../'>Networking-Day</a> > <a href='../3-tgw.html'>Lab3-多网络互联(Peering/TGW)</a> > 03-使用TGW创建互联环境
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建transit-gateway">创建Transit Gateway</a></li>
+    <li><a href="#创建transit-gateway-附件">创建Transit Gateway 附件</a></li>
+    <li><a href="#创建和配置transit-gateway-路由表">创建和配置Transit Gateway 路由表</a></li>
+    <li><a href="#配置路由传播">配置路由传播</a></li>
+    <li><a href="#配置各子网路由表">配置各子网路由表</a></li>
+    <li><a href="#验证测试">验证测试</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+<div class="tags">
+
+  <a class="tag-link" href="../tags/transit-gw">Transit GW</a>
+
+</div>
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              03-使用TGW创建互联环境
+            </h1>
+          
+
+        
+
+
+
+<div class="notices info" ><p>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。</p>
+</div>
+
+<h2 id="创建transit-gateway">创建Transit Gateway</h2>
+<hr>
+<p>点击VPC窗口的Transit Gateway按钮，点击Create Transit Gateway
+<img src="../images/3/image085.png" alt=""></p>
+<p>输入Name tag和Description
+<img src="../images/3/image086.png" alt=""></p>
+<p>点击创建TGW，
+<img src="../images/3/image087.png" alt=""></p>
+<h2 id="创建transit-gateway-附件">创建Transit Gateway 附件</h2>
+<hr>
+<p>点击VPC窗口的Transit Gateway Attachments按钮，点击Create Transit Gateway Attachments按钮
+<img src="../images/3/image090.png" alt=""></p>
+<p>在Transit Gateway ID那栏选中之前步骤创建的TGW<br>
+Attachment type选择VPC<br>
+在VPC Attachment部分，输入Attachment name tag<br>
+VPC ID选择之前创建的VPC Spoke-1<br>
+在Subnet IDs部分勾选全部2个Subnets<br>
+<img src="../images/3/image094.png" alt=""></p>
+<p>再点击创建，可以看到console上已经显示一个名为VPC Spoke-1的VPC attachment
+<img src="../images/3/image095.png" alt=""></p>
+<p>重复上述步骤，继续创建Attachment VPC Spoke-2和VPC Hub：</p>
+<p>点击Create Transit Gateway Attachments按钮
+<img src="../images/3/image097.png" alt=""></p>
+<p>在Transit Gateway ID那栏选中之前创建的TGW<br>
+Attachment type选择VPC<br>
+在VPC Attachment部分，输入Attachment name tag<br>
+VPC ID选择之前创建的VPC Spoke-2<br>
+在Subnet IDs部分勾选全部2个Subnets<br>
+<img src="../images/3/image100.png" alt=""></p>
+<p>再点击创建，可以看到console上已经显示一个名为的VPC Spoke-2的VPC attachment
+<img src="../images/3/image101.png" alt=""></p>
+<p>点击Create Transit Gateway Attachments按钮
+<img src="../images/3/image101.png" alt=""></p>
+<p>在Transit Gateway ID那栏选中之前创建的TGW<br>
+Attachment type选择VPC<br>
+在VPC Attachment部分<br>
+输入Attachment name tag<br>
+VPC ID选择之前创建的VPC Hub<br>
+在Subnet IDs部分勾选全部2个Subnets<br>
+<img src="../images/3/image106.png" alt=""></p>
+<p>再点击创建，可以看到console上已经显示一个名为的VPC Hub的VPC attachment
+<img src="../images/3/image107.png" alt=""></p>
+<h2 id="创建和配置transit-gateway-路由表">创建和配置Transit Gateway 路由表</h2>
+<hr>
+<p>点击Console里的Transit Gateway Route Tables，选中默认Route Table，选择Associations，依次选中不同的Attachment
+<img src="../images/3/image107.png" alt=""></p>
+<p>点击Delete association删除所有关联
+<img src="../images/3/image111.png" alt=""></p>
+<p>然后点击Create Transit Gateway Route Table按钮创建一个新的路由表
+<img src="../images/3/image113.png" alt=""></p>
+<p>输入Name tag为Spokes，选择Transit Gateway ID为之前创建的TGW
+<img src="../images/3/image115.png" alt=""></p>
+<p>点击创建好的新路由表
+<img src="../images/3/image116.png" alt=""></p>
+<p>选中建立好的Spokes路由表，选择Create association按钮
+<img src="../images/3/image117.png" alt=""></p>
+<p>在Create association console中，choose attachment to associate栏选择VPC Spoke-1
+<img src="../images/3/image119.png" alt=""></p>
+<p>点击Create association 创建association
+<img src="../images/3/image120.png" alt=""></p>
+<p>重复上述步骤，将VPC Spoke-2也associate到Spokes路由表中，选中建立好的Spokes路由表，选择Create association按钮
+<img src="../images/3/image122.png" alt=""></p>
+<p>在Create association console中，choose attachment to associate栏选择VPC Spoke-2
+<img src="../images/3/image124.png" alt=""></p>
+<p>点击Create association 创建association
+<img src="../images/3/image125.png" alt=""></p>
+<p>创建Hub路由表，点击Create Transit Gateway Route Table按钮创建一个新的路由表
+<img src="../images/3/image127.png" alt=""></p>
+<p>输入Name tag为Hub，选择Transit Gateway ID为之前创建的TGW
+<img src="../images/3/image129.png" alt=""></p>
+<p>点击创建好的新路由表
+<img src="../images/3/image130.png" alt=""></p>
+<p>将VPC Hub associate到Hub路由表中，选中建立好的Hub路由表，选择Create association按钮
+<img src="../images/3/image132.png" alt=""></p>
+<p>在Create association console中，choose attachment to associate栏选择VPC Hub
+<img src="../images/3/image134.png" alt=""></p>
+<p>点击Create association 创建association
+<img src="../images/3/image135.png" alt=""></p>
+<h2 id="配置路由传播">配置路由传播</h2>
+<hr>
+<p>点击Transit Gateway Route Tables console，选中Spokes路由表，选择Propagations，点击Create Propagations
+<img src="../images/3/image136.png" alt=""></p>
+<p>在Choose attachment to prpagate栏中选择VPC Hub
+<img src="../images/3/image138.png" alt=""></p>
+<p>点击创建
+<img src="../images/3/image139.png" alt=""></p>
+<p>再次点击Transit Gateway Route Tables console，选中Hub路由表，选择Propagations，点击Create Propagations
+<img src="../images/3/image141.png" alt=""></p>
+<p>在Choose attachment to prpagate栏中选择VPC Spoke-1，
+<img src="../images/3/image143.png" alt=""></p>
+<p>点击创建
+<img src="../images/3/image139.png" alt=""></p>
+<p>重复上述步骤，将Spoke-2的路由也propagate到Hub路由表中</p>
+<p>再次点击Transit Gateway Route Tables console，选中Hub路由表，选择Propagations，点击Create Propagations
+<img src="../images/3/image145.png" alt=""></p>
+<p>在Choose attachment to prpagate栏中选择VPC Spoke-2
+<img src="../images/3/image147.png" alt=""></p>
+<p>点击创建
+<img src="../images/3/image148.png" alt=""></p>
+<h2 id="配置各子网路由表">配置各子网路由表</h2>
+<hr>
+<p>在VPC console中选择Route Tables，选中之前创建的路由表Spoke1，选择Routes，选择Edit routes<br>
+<img src="../images/3/image149.png" alt=""></p>
+<p>点击Add route，添加一条路由，Destination栏填写<code>10.0.0.0/8</code>（此处注意：创建VPC时，我们最大的CIDR是16位的，但是创建路由时是可以指定8位的），Target栏选择Transit Gateway
+<img src="../images/3/image150.png" alt=""></p>
+<p>选中所创建的TGW
+<img src="../images/3/image152.png" alt=""></p>
+<p>点击Save routes</p>
+<p>在VPC console中选择Route Tables，选中之前创建的路由表Spoke2，选择Routes，选择Edit routes<br>
+<img src="../images/3/image153.png" alt=""></p>
+<p>点击Add route，添加一条路由，Destination栏填写<code>10.0.0.0/8</code>，Target栏选择Transit Gateway
+<img src="../images/3/image154.png" alt=""></p>
+<p>选中之前所创建的TGW
+<img src="../images/3/image156.png" alt=""></p>
+<p>点击Save routes</p>
+<p>在VPC console中选择Route Tables，选中之前创建的路由表Hub，选择Routes，选择Edit routes<br>
+<img src="../images/3/image157.png" alt=""></p>
+<p>点击Add route，添加一条路由，Destination栏填写<code>10.0.0.0/8</code>，Target栏选择Transit Gateway
+<img src="../images/3/image158.png" alt=""></p>
+<p>选中之前所创建的TGW
+<img src="../images/3/image160.png" alt=""></p>
+<p>点击Save routes</p>
+<h2 id="验证测试">验证测试</h2>
+<hr>
+<p>远程登录EC2实例Spoke1-sub-1a，PingEC2实例Spoke2-sub-1a
+<img src="../images/3/image161.png" alt=""></p>
+<p>Ping不通，证明两个Spoke VPC内的EC2实例不能互访</p>
+<p>远程登录EC2实例Spoke1-sub-1a，PingEC2实例Hub-sub-
+1a
+<img src="../images/3/image162.png" alt=""></p>
+<p>可以Ping通，证明Spoke1 VPC内的EC2实例可以和Hub VPC的EC2实例互访</p>
+<p>远程登录EC2实例Spoke2-sub-1a，PingEC2实例Hub-sub-
+1a
+<img src="../images/3/image163.png" alt=""></p>
+<p>可以Ping通，证明Spoke1 VPC内的EC2实例可以和Hub VPC的EC2实例互访。</p>
+<p>~完~</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../3-tgw/02-vpc-peering.html" title="02-创建VPC对等连接"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../4-monitor.html" title="Lab4-VPC网络监控和告警" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1649508493"></script>
+    <script src="../js/jquery.sticky.js?1649508493"></script>
+    <script src="../js/featherlight.min.js?1649508493"></script>
+    <script src="../js/highlight.pack.js?1649508493"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1649508493"></script>
+    <script src="../js/learn.js?1649508493"></script>
+    <script src="../js/hugo-learn.js?1649508493"></script>
+    
+        
+            <script src="../mermaid/mermaid.js?1649508493"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

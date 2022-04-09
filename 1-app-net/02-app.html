@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="cn" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="AWS Technical Event">
+<meta name="author" content="Weiqiong Chen">
+
+    <link rel="icon" href="../images/favicon.ico" type="image/png">
+
+    <title>02-应用部署和配置 :: AWS Networking Day</title>
+
+    
+    <link href="../css/nucleus.css?1649508493" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1649508493" rel="stylesheet">
+    <link href="../css/hybrid.css?1649508493" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1649508493" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1649508493" rel="stylesheet">
+    <link href="../css/auto-complete.css?1649508493" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1649508493" rel="stylesheet">
+    <link href="../css/theme.css?1649508493" rel="stylesheet">
+    <link href="../css/tabs.css?1649508493" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1649508493" rel="stylesheet">
+    
+    <link href="../css/theme-aws.css?1649508493" rel="stylesheet">
+    
+    
+
+    <script src="../js/jquery-3.3.1.min.js?1649508493"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../1-app-net/02-app.html">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <div>
+   <a href="../" title="Go Index">
+       <img style="vertical-align:middle" src="../images/logo.png" height="70px" />
+   </a>
+ </div>
+ 
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../js/lunr.min.js?1649508493"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1649508493"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../js/search.js?1649508493"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='../'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/0-prepare.html" title="Lab0-实验环境准备" class="dd-item
+        
+        
+        
+        ">
+      <a href="../0-prepare.html">
+          Lab0-实验环境准备
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-app-net.html" title="Lab1-构建3层应用的生产网络" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../1-app-net.html">
+          Lab1-构建3层应用的生产网络
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/01-network.html" title="01-网络环境配置" class="dd-item ">
+        <a href="../1-app-net/01-network.html">
+        01-网络环境配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/02-app.html" title="02-应用部署和配置" class="dd-item active">
+        <a href="../1-app-net/02-app.html">
+        02-应用部署和配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1-app-net/03-elb.html" title="03-负载均衡配置" class="dd-item ">
+        <a href="../1-app-net/03-elb.html">
+        03-负载均衡配置
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-accelerate.html" title="Lab2-应用的静态和动态加速" class="dd-item
+        
+        
+        
+        ">
+      <a href="../2-accelerate.html">
+          Lab2-应用的静态和动态加速
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/01-content.html" title="01-源内容" class="dd-item ">
+        <a href="../2-accelerate/01-content.html">
+        01-源内容
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2-accelerate/02-cloudfront.html" title="02-配置静态和动态加速" class="dd-item ">
+        <a href="../2-accelerate/02-cloudfront.html">
+        02-配置静态和动态加速
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-tgw.html" title="Lab3-多网络互联(Peering/TGW)" class="dd-item
+        
+        
+        
+        ">
+      <a href="../3-tgw.html">
+          Lab3-多网络互联(Peering/TGW)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/01-create-vpc.html" title="01-创建本实验环境" class="dd-item ">
+        <a href="../3-tgw/01-create-vpc.html">
+        01-创建本实验环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/02-vpc-peering.html" title="02-创建VPC对等连接" class="dd-item ">
+        <a href="../3-tgw/02-vpc-peering.html">
+        02-创建VPC对等连接
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/3-tgw/03-tgw.html" title="03-使用TGW创建互联环境" class="dd-item ">
+        <a href="../3-tgw/03-tgw.html">
+        03-使用TGW创建互联环境
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-monitor.html" title="Lab4-VPC网络监控和告警" class="dd-item
+        
+        
+        
+        ">
+      <a href="../4-monitor.html">
+          Lab4-VPC网络监控和告警
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/01-vpc-flow-logs.html" title="01-设置VPC Flow Logs" class="dd-item ">
+        <a href="../4-monitor/01-vpc-flow-logs.html">
+        01-设置VPC Flow Logs
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/02-cloudwatch.html" title="02-CloudWatch监控" class="dd-item ">
+        <a href="../4-monitor/02-cloudwatch.html">
+        02-CloudWatch监控
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4-monitor/03-cloudtrail.html" title="03-CloudTrail审计跟踪（可选）" class="dd-item ">
+        <a href="../4-monitor/03-cloudtrail.html">
+        03-CloudTrail审计跟踪（可选）
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/about.html" title="关于我们" class="dd-item
+        
+        
+        
+        ">
+      <a href="../about.html">
+          关于我们
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+	<h5 class="copyright">CopyRight: &copy; 2022 bwcx.me.
+		<BR>Author: Weiqiong Chen/Robin Long
+		<BR>Update: 2022-04
+	<h5>
+</left>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../'>Networking-Day</a> > <a href='../1-app-net.html'>Lab1-构建3层应用的生产网络</a> > 02-应用部署和配置
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建数据库">创建数据库</a></li>
+    <li><a href="#创建ec2">创建EC2</a></li>
+    <li><a href="#配置测试应用">配置测试应用</a></li>
+    <li><a href="#生成ami和模板">生成AMI和模板</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+<div class="tags">
+
+  <a class="tag-link" href="../tags/aurora">Aurora</a>
+
+  <a class="tag-link" href="../tags/lamp">LAMP</a>
+
+</div>
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              02-应用部署和配置
+            </h1>
+          
+
+        
+
+
+
+<div class="notices info" ><p>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。</p>
+</div>
+
+<h2 id="创建数据库">创建数据库</h2>
+<hr>
+<p>此处的数据库平台包括：Aurora MySQL 平台和引擎。</p>
+<p>在AWS的Console上搜索RDS，打开Amazon RDS服务。
+<img src="../images/1/image027.jpg" alt=""></p>
+<ul>
+<li>创建DB Subnet group</li>
+</ul>
+<p>点击Subnet groups，点击Create DB Subnet Group按钮
+<img src="../images/1/25.jpg" alt=""></p>
+<p>在Name和Description分别输入lab1，VPC选择前面创建的vpc1
+<img src="../images/1/26.jpg" alt=""></p>
+<p>Add subnets选择上一个步骤里面创建的两个private subnet(注意看CIDR来区分)，点击Create按钮
+<img src="../images/1/27.jpg" alt=""></p>
+<ul>
+<li>创建Aurora MySQL database</li>
+</ul>
+<p>点击Create database按钮
+<img src="../images/1/29.jpg" alt=""></p>
+<p>默认选择<code>Standard create</code>，<br>
+在Engine type默认选择<code>Amazon Aurora</code>，<br>
+在Edition默认选择 <code>Amazon Aurora with MySQL compatibility</code><br>
+<img src="../images/1/30.jpg" alt=""></p>
+<p>在Capacity type默认选择 <code>Provisioned</code>，<br>
+在Version选择最新版本 <code>Aurora(MySQL5.7) 2.09.0</code>，<br>
+在Templates默认选<code>Production</code><br>
+<img src="../images/1/31.jpg" alt=""></p>
+<p>在DB cluster identifier里面输入database-lab1，<br>
+在Password输入你设定的密码 [注意：要记录好密码]<br>
+<img src="../images/1/32.jpg" alt=""></p>
+
+<div class="notices warning" ><p>请牢记此处你设置的密码。</p>
+</div>
+
+<p>在DB instance size选择 <code>Bustable classes(includes t classes)</code> ,<br>
+在下拉框中选择<code>db.t3.small </code><br>
+在Availability &amp; durability默认选择 <code>Create an Aurora Replica or Reader node in a different AZ (recommended for scaled availability)</code> <br>
+在Connectivity里面选择前面创建的vpc1<br>
+<img src="../images/1/33.jpg" alt=""></p>
+<p>点开 Additional connectivity configuration，在Subnet group里面选择之前创建的lab1
+<img src="../images/1/34.jpg" alt=""></p>
+<p>其他保持默认，点击Create database按钮
+<img src="../images/1/35.jpg" alt=""></p>
+<p>等几分钟，数据库的状态Status会变为Available。拷贝database cluster writer的endpoint（例如此处为 <code>database-lab1.cluster-cnszku2km8ca.us-east-1.rds.amazonaws.com</code>）<br>
+<img src="../images/1/36.jpg" alt=""></p>
+
+<div class="notices warning" ><p>此处的截图的区域其实并不是新加坡区域（写文档时还不确定一定使用新加坡区域），所以此处的URL地址仅供参考。</p>
+</div>
+
+<p>接下来修改security group：选择Writer instance，点击VPC security groups链接
+<img src="../images/1/37.jpg" alt=""></p>
+<p>然后点击Edit inbound rules按钮
+<img src="../images/1/38.jpg" alt=""></p>
+<p>在Type里面选MYSQL/Aurora，source里面输入<code>192.168.0.0/16</code>，点击Save rules按钮。
+<img src="../images/1/39.jpg" alt=""></p>
+<h2 id="创建ec2">创建EC2</h2>
+<hr>
+<ul>
+<li>创建keypair</li>
+</ul>
+<p>打开EC2服务
+<img src="../images/1/40.jpg" alt=""></p>
+<p>点击Key Pairs，点击Create key pair按钮
+<img src="../images/1/41.jpg" alt=""></p>
+<p>在Name输入<code>lab1</code>,<br>
+File format根据您当前的使用的ssh软件选择：pem（Linux/Mac） or ppk（Windows）；<br>
+点击Create key pair按钮后会下载一个pem或ppk到您的本地机器上。
+<img src="../images/1/42.jpg" alt=""></p>
+<ul>
+<li>创建EC2实例</li>
+</ul>
+<p>打开EC2服务
+<img src="../images/1/43.jpg" alt=""></p>
+<p>点击Instances， 点击Launch instances按钮
+<img src="../images/1/44.jpg" alt=""></p>
+<p>点击<code>Amazon Linux 2 AMI (HVM), SSD Volume Type</code>后面的Select按钮
+<img src="../images/1/image047.png" alt=""></p>
+<p>选择t3.small，点击Next:Configure Instance Details按钮
+<img src="../images/1/46.jpg" alt=""></p>
+<p>在Network选择前面创建的vpc1，subnet选择<code>publicsubnet1</code>，Auto-assign Public IP选择<code>Enable</code>，点击Next:Add Storage按钮
+<img src="../images/1/47.jpg" alt=""></p>
+<p>Storage取默认值即可，点击Next:Add Tags按钮，Key填入 <code>Name</code>（默认情况下，标签tag为Name的Value会直接显示在控制台上），Value填入 <code>lab1</code> ，点击Next:Configure Security Group
+<img src="../images/1/48.jpg" alt=""></p>
+<p>Security group name输入<code>lab1</code>，修改Description，点击Add Rule按钮，从Type列表里面选择HTTP，点击Review and Launch按钮。
+<img src="../images/1/49.jpg" alt=""></p>
+<p>点击Launch按钮
+<img src="../images/1/50.jpg" alt=""></p>
+<p>选择之前创建的keypair lab1，勾选 I acknowledge，点击 Launch Instances按钮。
+<img src="../images/1/51.jpg" alt=""></p>
+<p>等待几分钟后EC2的状态Status变为Running。拷贝 &ldquo;Public IPv4 DNS（此处为： <code>ec2-3-236-166-17.compute-1.amazonaws.com</code>）&rdquo;
+<img src="../images/1/52.jpg" alt=""></p>
+<ul>
+<li>配置ssh远程访问EC2</li>
+</ul>
+<p>在您的客户端电脑上执行下列命令，以下以Mac或Linux操作系统的命令行为例（把 &ldquo;Public IPv4 DNS&rdquo; 换为上一个步骤里面的拷贝的DNS）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod <span style="color:#ae81ff">400</span> lab1.pem
+
+ssh -i lab1.pem ec2-user@&lt;Public IPv4 DNS&gt;
+
+<span style="color:#75715e"># ssh -i lab1.pem ec2-user@ec2-3-236-166-17.compute-1.amazonaws.com</span>
+</code></pre></div><p>按提示输入 yes</p>
+<p>如果您使用的事windows操作系统，请下载安装PuTTY
+参看下列链接配置  <a href="https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html">https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/step-2-connect-to-instance.html</a></p>
+<h2 id="配置测试应用">配置测试应用</h2>
+<hr>
+<p>此处主要配置EC2，安装Apache、MySQL、PHP并配置，配置Aurora MySQL，配置PHP页面</p>
+<p>安装httpd、php、mysql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo su -
+yum update -y
+yum install -y  httpd php mysql57-server php-mysqlnd
+service httpd start
+chkconfig httpd on
+echo <span style="color:#e6db74">&#34;&lt;?php phpinfo(); ?&gt;&#34;</span> &gt; /var/www/html/phpinfo.php
+service httpd restart
+</code></pre></div><p>在您的浏览器输入 http://PublicIPv4DNS/ 确认是否可以看到 apache页面 Amazon Linux AMI Test Page<br>
+在您的浏览器输入 http://PublicIPv4DNS/phpinfo.php 确认是否可以看到 phpinfo</p>
+<p>配置Aurora MySQL</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mysql --user<span style="color:#f92672">=</span>admin --password -h <span style="color:#f92672">[</span>your database endpoint<span style="color:#f92672">]</span>
+
+<span style="color:#75715e"># mysql --user=admin --password -h database-lab1.cluster-cnszku2km8ca.us-east-1.rds.amazonaws.com</span>
+</code></pre></div><p>如下图所示
+<img src="../images/1/53.jpg" alt=""></p>
+<p>执行如下SQL代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> lab1;
+USE lab1;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> table1(name varchar(<span style="color:#ae81ff">50</span>),randomnumber INT);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">into</span> table1 <span style="color:#66d9ef">values</span>(<span style="color:#e6db74">&#39;lab1&#39;</span>,<span style="color:#ae81ff">1</span>);
+exit
+</code></pre></div><p>然后切换到linux shell环境下执行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd /var/www/html
+wget https://d0.awsstatic.com/logos/powered-by-aws-white.png
+vi db.php
+</code></pre></div><p>内容如下（记得修改对应的 db_user_name 和 db_user_pwd）</p>
+<pre><code>&lt;?php
+$link=mysql_connect(&quot;&lt;您的Aurora MySQL endpoint&gt;&quot;,&quot;db_user_name&quot;,&quot;db_user_pwd&quot;) or die(&quot;Error,Can't connect mySql&quot;);
+$db_selected=mysql_select_db(&quot;lab1&quot;,$link);
+$result=mysql_query(&quot;update table1 set randomnumber=FLOOR(RAND()*100) where name='lab1'&quot;);
+$result=mysql_query(&quot;select * from table1&quot;,$link);//执行查询操作
+$info=mysql_fetch_array($result);
+?&gt;
+&lt;a href=&quot;https://aws.amazon.com/what-is-cloud-computing&quot;&gt;&lt;img src=&quot;powered-by-aws-white.png&quot; style=&quot;background-color:black;&quot; alt=&quot;Powered by AWS Cloud Computing&quot;&gt;&lt;/a&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Name&lt;/td&gt;
+&lt;td&gt;randomnumber&lt;/td&gt;
+&lt;/tr&gt;
+&lt;?php
+do{
+?&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;?php echo $info[name];?&gt;&lt;/th&gt;
+&lt;th&gt;&lt;?php echo $info[randomnumber];?&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;?php
+}while ($info = mysql_fetch_array($result));
+?&gt;
+&lt;/table&gt;
+</code></pre><p>在您的浏览器输入http://PublicIPv4DNS/db.php 确认是否可以看到 存入MySQL的记录，每次刷新页面都会用随机数更新记录并读取显示在页面上，如下图示例
+<img src="../images/1/54.jpg" alt=""></p>
+<h2 id="生成ami和模板">生成AMI和模板</h2>
+<hr>
+<ul>
+<li>从EC2实例生成AMI</li>
+</ul>
+<p>点击Instances，选中刚刚配置好的EC2实例，从Actions下拉列表里选择Image and templates，再选择Create image
+<img src="../images/1/55.jpg" alt=""></p>
+<p>在Image name和Description里面输入lab1，点击Create image按钮
+<img src="../images/1/56.jpg" alt=""></p>
+<ul>
+<li>从EC2实例生成Launch Template</li>
+</ul>
+<p>点击Instances，选中刚刚配置好的EC2实例，从Actions下拉列表里选择Image and templates，再选择Create  template from instance
+<img src="../images/1/57.jpg" alt=""></p>
+<p>在Launch template name和Description输入lab1，选中Auto Scaling guidance
+<img src="../images/1/58.jpg" alt=""></p>
+<p>在AMI搜索lab1，然后选择前面创建好的AMI：lab1，点击弹出页面的 confirm changes按钮。
+<img src="../images/1/59.jpg" alt=""></p>
+<p>在Security groups下拉列表里面选择vpc：lab1
+<img src="../images/1/60.jpg" alt=""></p>
+<p>在Network interface1点击Remove，删除<br>
+点开Advanced details，在userdata里面输入下列内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash 
+</span><span style="color:#75715e"></span>service httpd start 
+chkconfig httpd on
+</code></pre></div><p><img src="../images/1/61.jpg" alt=""></p>
+<p>然后点击Create launch template按钮
+<img src="../images/1/62.jpg" alt=""></p>
+<p>如果在创建的过程中，Behavior如果报错，请从下拉列表中选择Don’t include in launch template</p>
+<p><img src="../images/1/image064.png" alt=""></p>
+<p>然后再重新创建。</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../1-app-net/01-network.html" title="01-网络环境配置"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../1-app-net/03-elb.html" title="03-负载均衡配置" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.min.js?1649508493"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1649508493"></script>
+    <script src="../js/jquery.sticky.js?1649508493"></script>
+    <script src="../js/featherlight.min.js?1649508493"></script>
+    <script src="../js/highlight.pack.js?1649508493"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom-3.6.0.js?1649508493"></script>
+    <script src="../js/learn.js?1649508493"></script>
+    <script src="../js/hugo-learn.js?1649508493"></script>
+    
+        
+            <script src="../mermaid/mermaid.js?1649508493"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flow Logs on AWS Networking Day</title>
+    <link>/tags/flow-logs.html</link>
+    <description>Recent content in Flow Logs on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/tags/flow-logs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>01-设置VPC Flow Logs</title>
+      <link>/4-monitor/01-vpc-flow-logs.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/4-monitor/01-vpc-flow-logs.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建 Log Group  首先我们需要创建一个 CloudWatch Log Group，来存储我们在这一节中需要记录的Log日志信息。
+  控制台导航到“CloudWatch”，选择 Log -&amp;gt; Log groups，点击右上方的 “Create log group”   输入Log group name 为shenzhen-im-day，点击 Create 按钮   创建VPC Flow Logs  在本章节中，您将为VPC Hub创建流日志。
+ 控制台导航到“VPC” – “Your VPCs”  选择“VPC Hub”, 单击“Flow Logs” 选项，然后单击 “Create flow log” 将 过滤器 “Filter” 改为 “All” 将 最大聚合间隔 “Maximum aggregation interval” 设置为1分钟 “1 minute” 将 目标日志组 “Destination log group” 设置为 “shenzhen-im-day” 单击 设置权限 “Set Up Permissions” 以创建新的IAM角色  “Role Name” 保持默认 单击 允许 “Allow” 然后导航回到 创建流日志”Create flow log” 界面  单击IAM角色旁边的刷新按钮，然后选择您刚创建的IAM角色  单击 创建 “Create”  生成测试流量  现在，在CloudWatch中收集了往返于VPC Hub中网络接口的IP流量。现在我们需要在VPC Hub中的EC2实例生成一些流量，例如使用网络工具iperf在Hub中的实例“hub-sub-1a” 和Spoke1中的实例 “spoke1-sub-1a” 之间生成流量。</description>
+    </item>
+    
+  </channel>
+</rss>

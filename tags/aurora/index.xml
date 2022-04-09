@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aurora on AWS Networking Day</title>
+    <link>/tags/aurora.html</link>
+    <description>Recent content in Aurora on AWS Networking Day</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/tags/aurora/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lab1-构建3层应用的生产网络</title>
+      <link>/1-app-net.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1-app-net.html</guid>
+      <description> 请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 本实验目的主要是在AWS上搭建一个简单的3层应用网络，部署后的网络架构图如下： </description>
+    </item>
+    
+    <item>
+      <title>02-应用部署和配置</title>
+      <link>/1-app-net/02-app.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1-app-net/02-app.html</guid>
+      <description>请确保操作的区域是 AWS新加坡区域（ap-southeast-1）。
+ 创建数据库  此处的数据库平台包括：Aurora MySQL 平台和引擎。
+在AWS的Console上搜索RDS，打开Amazon RDS服务。  创建DB Subnet group  点击Subnet groups，点击Create DB Subnet Group按钮 在Name和Description分别输入lab1，VPC选择前面创建的vpc1 Add subnets选择上一个步骤里面创建的两个private subnet(注意看CIDR来区分)，点击Create按钮  创建Aurora MySQL database  点击Create database按钮 默认选择Standard create，
+在Engine type默认选择Amazon Aurora，
+在Edition默认选择 Amazon Aurora with MySQL compatibility
+在Capacity type默认选择 Provisioned，
+在Version选择最新版本 Aurora(MySQL5.7) 2.09.0，
+在Templates默认选Production
+在DB cluster identifier里面输入database-lab1，
+在Password输入你设定的密码 [注意：要记录好密码]
+请牢记此处你设置的密码。
+ 在DB instance size选择 Bustable classes(includes t classes) ,
+在下拉框中选择db.t3.small 
+在Availability &amp;amp; durability默认选择 Create an Aurora Replica or Reader node in a different AZ (recommended for scaled availability) 在Connectivity里面选择前面创建的vpc1</description>
+    </item>
+    
+  </channel>
+</rss>
